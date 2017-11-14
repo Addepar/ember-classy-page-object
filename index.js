@@ -7,7 +7,7 @@ module.exports = {
   treeForAddonTestSupport(tree) {
     // intentionally not calling _super here
     // so that can have our `import`'s be
-    // import { PageObject, ScopedPageObject } from 'ember-classy-page-object';
+    // import { PageObject } from 'ember-classy-page-object';
 
     const Funnel = require('broccoli-funnel');
 
