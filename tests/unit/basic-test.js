@@ -1,4 +1,4 @@
-import { PageObject } from 'ember-classy-page-object';
+import PageObject from 'ember-classy-page-object';
 
 import { module, test } from 'ember-qunit';
 
