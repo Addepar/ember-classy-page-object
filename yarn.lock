@@ -1922,9 +1922,9 @@ ember-cli-normalize-entity-name@^1.0.0:
   dependencies:
     silent-error "^1.0.0"
 
-ember-cli-page-object@pzuraq/ember-cli-page-object#fdadc85aed468a2aeeb88ade5e2a9b4dc4a8b54d:
-  version "1.12.1"
-  resolved "https://codeload.github.com/pzuraq/ember-cli-page-object/tar.gz/fdadc85aed468a2aeeb88ade5e2a9b4dc4a8b54d"
+ember-cli-page-object@1.13.0-alpha.1:
+  version "1.13.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/ember-cli-page-object/-/ember-cli-page-object-1.13.0-alpha.1.tgz#f5b80b9c19001cdedc62c65be84ef06591f38487"
   dependencies:
     ceibo "~2.0.0"
     ember-cli-babel "^6.6.0"
