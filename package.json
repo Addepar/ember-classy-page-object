@@ -20,7 +20,7 @@
   "dependencies": {
     "broccoli-funnel": "^2.0.1",
     "ember-cli-babel": "^6.6.0",
-    "ember-cli-page-object": "pzuraq/ember-cli-page-object#fdadc85aed468a2aeeb88ade5e2a9b4dc4a8b54d"
+    "ember-cli-page-object": "1.13.0-alpha.1"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
