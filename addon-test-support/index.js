@@ -18,6 +18,10 @@ export {
   visitable
 } from 'ember-cli-page-object';
 
-export { collection } from './properties/collection';
+export {
+  alias
+} from 'ember-cli-page-object/macros';
 
-export { default } from './page-object';
+export { collection } from './-private/properties/collection';
+
+export { default } from './-private/page-object';
