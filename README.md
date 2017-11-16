@@ -4,7 +4,7 @@ Provides a super simple class-like wrapper around ember-cli-page-object.
 
 ## Usage
 
-Given a simple ToggleButton component that just toggles it's is active state with a
+Given a simple ToggleButton component that just toggles its active state with a
 template like so:
 
 ```hbs
