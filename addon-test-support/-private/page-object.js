@@ -1,6 +1,8 @@
+import { assert } from '@ember/debug';
+
 import { create, collection } from 'ember-cli-page-object';
-import deepMergeDescriptors from './-private/utils/deep-merge-descriptors';
-import walk from './-private/utils/walk';
+import deepMergeDescriptors from './utils/deep-merge-descriptors';
+import walk from './utils/walk';
 
 import { useNativeEvents } from 'ember-cli-page-object/extend';
 
@@ -33,7 +35,7 @@ function replaceCollections(object, property, descriptor) {
   object[property] = collection(value);
 }
 
-export default class PageObject {
+class PageObject {
   constructor(definition) {
     definition = walk(definition, replaceDescriptors);
 
@@ -41,6 +43,8 @@ export default class PageObject {
   }
 
   extend(extension) {
+    assert('must provide a definition with atleast one key when extending a PageObject', extension && Object.keys(extension).length > 0);
+
     return new PageObject(deepMergeDescriptors(extension, this))
   }
 
@@ -48,3 +52,5 @@ export default class PageObject {
     return create(walk(this, replaceCollections));
   }
 }
+
+export default new PageObject({});

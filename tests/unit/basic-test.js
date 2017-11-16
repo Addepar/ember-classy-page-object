@@ -7,7 +7,7 @@ module('basic tests');
 test('it properly converts descriptors', function(assert) {
   assert.expect(3);
 
-  let page = new PageObject({
+  let page = PageObject.extend({
     get foo() {
       assert.ok(true, 'getter converted correctly');
     },
@@ -26,7 +26,7 @@ test('it properly converts descriptors', function(assert) {
 test('it properly merges subcontexts', function(assert) {
   assert.expect(4);
 
-  let page = new PageObject({
+  let page = PageObject.extend({
     foo: 123,
     content: {
       bar: 456

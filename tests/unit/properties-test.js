@@ -7,7 +7,7 @@ module('basic tests');
 test('it properly merges collections', function(assert) {
   assert.expect(4);
 
-  let page = new PageObject({
+  let page = PageObject.extend({
     foo: 123,
     content: collection({
       bar: 456
@@ -27,7 +27,7 @@ test('it properly merges collections', function(assert) {
 test('it properly replaces collections', function(assert) {
   assert.expect(1);
 
-  let page = new PageObject({
+  let page = PageObject.extend({
     foo: 123,
     content: collection({
       bar: 456
