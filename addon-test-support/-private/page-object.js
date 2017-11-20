@@ -35,21 +35,31 @@ function replaceCollections(object, property, descriptor) {
   object[property] = collection(value);
 }
 
+function extractDefinitions(object, property, descriptor) {
+  const { value } = descriptor;
+
+  if (!(value instanceof PageObject)) return;
+
+  object[property] = value.definition;
+}
+
 class PageObject {
   constructor(definition) {
-    definition = walk(definition, replaceDescriptors);
-
-    Object.assign(this, definition);
+    this.definition = walk(definition, replaceDescriptors);
   }
 
   extend(extension) {
     assert('must provide a definition with atleast one key when extending a PageObject', extension && Object.keys(extension).length > 0);
 
-    return new PageObject(deepMergeDescriptors(extension, this))
+    return new PageObject(deepMergeDescriptors(extension, this.definition))
+  }
+
+  scope(scope) {
+    return this.extend({ scope });
   }
 
   create() {
-    return create(walk(this, replaceCollections));
+    return create(walk(this.definition, extractDefinitions, replaceCollections));
   }
 }
 

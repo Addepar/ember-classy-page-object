@@ -17,10 +17,10 @@ test('it properly converts descriptors', function(assert) {
     }
   });
 
-  assert.ok(page.foo.isDescriptor, 'function marked as descriptor correctly')
+  assert.ok(page.definition.foo.isDescriptor, 'function marked as descriptor correctly')
 
-  page.foo.get();
-  page.foo.set();
+  page.definition.foo.get();
+  page.definition.foo.set();
 });
 
 test('it properly merges subcontexts', function(assert) {
@@ -39,10 +39,23 @@ test('it properly merges subcontexts', function(assert) {
     }
   });
 
-  assert.equal(page.foo, 123);
-  assert.equal(page.content.bar, 456);
+  assert.equal(page.definition.foo, 123);
+  assert.equal(page.definition.content.bar, 456);
 
-  assert.ok(page.content.baz, 'nested function marked as descriptor correctly')
+  assert.ok(page.definition.content.baz, 'nested function marked as descriptor correctly')
 
-  page.content.baz.get();
+  page.definition.content.baz.get();
+});
+
+test('it adds scope with scope shortcut helper', function(assert) {
+  assert.expect(2);
+
+  let page = PageObject.extend({
+    scope: 'foo'
+  });
+
+  let scopedPage = page.scope('bar');
+
+  assert.equal(page.definition.scope, 'foo');
+  assert.equal(scopedPage.definition.scope, 'bar');
 });

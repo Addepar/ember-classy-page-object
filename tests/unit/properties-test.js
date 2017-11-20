@@ -5,40 +5,21 @@ import { module, test } from 'ember-qunit';
 module('basic tests');
 
 test('it properly merges collections', function(assert) {
-  assert.expect(4);
+  assert.expect(3);
 
   let page = PageObject.extend({
     foo: 123,
     content: collection({
-      bar: 456
+      bar: 456,
+      baz: 'qux'
     })
   }).extend({
-    content: {
+    content: collection({
       baz: 789
-    }
+    })
   });
 
-  assert.equal(page.foo, 123);
-  assert.ok(page.content.isCollection);
-  assert.equal(page.content.bar, 456);
-  assert.equal(page.content.baz, 789);
-});
-
-test('it properly replaces collections', function(assert) {
-  assert.expect(1);
-
-  let page = PageObject.extend({
-    foo: 123,
-    content: collection({
-      bar: 456
-    })
-  }).extend({
-    content: {
-      baz: 789
-    }
-  }).create();
-
-  let collectionDescriptor = Object.getOwnPropertyDescriptor(page, 'content');
-
-  assert.equal(typeof collectionDescriptor.get, 'function', 'correctly replaced with collection');
+  assert.equal(page.definition.foo, 123);
+  assert.equal(page.definition.content._definition.bar, 456);
+  assert.equal(page.definition.content._definition.baz, 789);
 });
