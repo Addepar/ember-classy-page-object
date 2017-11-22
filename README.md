@@ -112,8 +112,70 @@ Classy page object re-exports all of the helpers from ember-cli-page-object with
   * `fullScope`
   * `getContext`
 
-Some helpers like `collection` have been modified to make them extendible, so it is highly recommended
-that you import the helpers from classy page object instead of ember-cli-page-object.
+Some helpers have been overridden to make them mergeable and easier to use, such as `collection`,
+so it's highly recommended that you use these helpers from `ember-classy-page-object` and not
+from `ember-cli-page-object` directly.
+
+### Collection
+
+The collection helper in `ember-cli-page-object` has some shortcomings, mostly the fact that it
+requires users to call it as a function to generate an enumerable, and can only query directly by
+index. It also confusingly refers to both the enumerable items, and their immediate parent (which is
+why you must provide `itemScope` and `item` to the definition, for instance). Classy PageObject's
+collection simplifies the collection helper.
+
+`collection` should now receive the definition for just the items that are enumerable themselves.
+
+```js
+// before
+
+page = create({
+  rows: collection({
+    scope: 'table',
+
+    itemScope: 'tr',
+
+    item: {
+      firstName: text('td.first-name'),
+      lastName: text('td.last-name')
+    }
+  })
+});
+
+// after
+
+page = PageObject.extend({
+  table: {
+    scope: 'table',
+
+    rows: collection({
+      scope: 'tr',
+      firstName: text('td.first-name'),
+      lastName: text('td.last-name')
+    })
+  }
+}).create();
+```
+
+Collections now return an instance of a class with the following public API methods:
+
+* `eq(index: number): Page`: Return the page for the item at the specified index
+* `forEach(fn: (item, index, list) => void): void`: Run a function for every item in the collection
+* `map(fn: (item, index, list) => any): Array<any>`: Map a transform over every item in the collection
+* `findAll(query: object | fn(item, index, list) => boolean): Array<Page>`: Find all items in the collection
+  which match the query. If the query is an object, it will return all items whose properties
+  are equal to every key/property on the query object. If it is a function it will return any
+  item that returns true when passed to the function.
+* `findOne(query: object | fn(item, index, list) => boolean): Page | undefined`: Find the first item in the
+  collection that matches the query. If the query is an object, it will return all items whose properties
+  are equal to every key/property on the query object. If it is a function it will return any
+  item that returns true when passed to the function. If more than one item is matched, the helper will
+  throw an error.
+* `toArray(): Array<Page>`: Convert the collection into a native array
+
+And the following properties
+
+* `length: number`: The number of items in the collection (`count`)
 
 ## Installation
 
