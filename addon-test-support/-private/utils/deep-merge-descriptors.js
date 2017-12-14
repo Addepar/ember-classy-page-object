@@ -8,19 +8,22 @@ export default function deepMergeDescriptors(dest, src) {
     let descriptor = Object.getOwnPropertyDescriptor(src, name);
     const { value: srcValue } = descriptor;
 
-    if (isObject(srcValue)) {
-      let mergeTarget = {};
+    // The property exists on both objects
+    if (Object.hasOwnProperty.call(dest, name)) {
+      let { value: destValue } = Object.getOwnPropertyDescriptor(dest, name);
 
-      if (Object.hasOwnProperty.call(dest, name)) {
-        let { value: destValue } = Object.getOwnPropertyDescriptor(dest, name);
+      // Deep merge if both are objects
+      if (isObject(destValue) && isObject(srcValue)) {
+        descriptor.value = deepMergeDescriptors(destValue, srcValue);
 
-        mergeTarget = isObject(destValue) ? destValue : mergeTarget;
+      // Defer to the dest value otherwise
+      } else {
+        return;
       }
 
-      descriptor.value = deepMergeDescriptors(mergeTarget, srcValue);
-
-    } else if (Object.hasOwnProperty.call(dest, name)) {
-      return;
+    // The property only exists on the src
+    } else {
+      descriptor.value = isObject(srcValue) ? deepMergeDescriptors({}, srcValue) : srcValue;
     }
 
     Object.defineProperty(dest, name, descriptor);
