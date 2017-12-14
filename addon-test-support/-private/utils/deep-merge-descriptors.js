@@ -16,14 +16,14 @@ export default function deepMergeDescriptors(dest, src) {
       if (isObject(destValue) && isObject(srcValue)) {
         descriptor.value = deepMergeDescriptors(destValue, srcValue);
 
-      // Defer to the dest value otherwise
+      // Defer to the 'dest' value otherwise (ie, do not redefine property)
       } else {
         return;
       }
 
-    // The property only exists on the src
-    } else {
-      descriptor.value = isObject(srcValue) ? deepMergeDescriptors({}, srcValue) : srcValue;
+    // The property only exists on 'src'
+    } else if (isObject(srcValue)) {
+      descriptor.value = deepMergeDescriptors({}, srcValue);
     }
 
     Object.defineProperty(dest, name, descriptor);
