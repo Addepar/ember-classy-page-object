@@ -59,7 +59,10 @@ class CollectionProxy {
 }
 
 export function collection(definition) {
-  let collectionProxy;
+  // Collection proxies need to be created for each of instances of this collection,
+  // and there may be many since page objects can be reused in many locations. We use
+  // a WeakMap to store each instance relative to its node.
+  let collectionProxyMap = new WeakMap();
 
   return {
     isDescriptor: true,
@@ -78,11 +81,13 @@ export function collection(definition) {
         item: this._definition
       });
 
-      collectionProxy = new CollectionProxy(create(pageDefinition, { parent: node }), key);
+      let collectionProxy = new CollectionProxy(create(pageDefinition, { parent: node }), key);
+
+      collectionProxyMap.set(node, collectionProxy);
     },
 
     get() {
-      return collectionProxy;
+      return collectionProxyMap.get(this);
     },
 
     _definition: definition
