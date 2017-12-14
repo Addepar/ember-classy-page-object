@@ -14,10 +14,9 @@ const SimpleListPage = PageObject.extend({
   })
 });
 
-
 moduleForAcceptance('Acceptance | collection');
 
-test('visiting /', function(assert) {
+test('collection works as expected', function(assert) {
   const list = SimpleListPage.create();
 
   visit('/');
@@ -40,5 +39,24 @@ test('visiting /', function(assert) {
     assert.equal(list.items.findOne({ text: 'Foo', isActive: true }), undefined);
 
     assert.throws(() => list.items.findOne((i) => i.isActive || i.text === 'Foo'), /Expected at most one result from findOne query, but found 2/);
+  });
+});
+
+test('collections do not share instances of proxies', function(assert) {
+  let page = PageObject.extend({
+    scope: 'foo-bar-baz',
+
+    simpleList: SimpleListPage
+  }).create();
+
+  // create a simple list to side-effect
+  SimpleListPage.create();
+
+  visit('/');
+
+  andThen(() => {
+    assert.throws(() => {
+      assert.equal(page.simpleList.items.eq(0).text, 'Foo')
+    }, /foo-bar-baz \[data-test-simple-list\] \[data-test-simple-list-item\]:eq\(0\)/);
   });
 });
