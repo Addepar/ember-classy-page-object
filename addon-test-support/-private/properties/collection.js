@@ -59,29 +59,32 @@ class CollectionProxy {
 }
 
 export function collection(definition) {
-  let collectionProxy;
+  let collectionProxy,
+      collectionKey,
+      pageDefinition = {};
 
   return {
     isDescriptor: true,
 
     setup(node, key) {
+      collectionKey = key;
+
       const {
         scope: itemScope,
         resetScope
       } = this._definition;
-
-      let pageDefinition = {};
 
       pageDefinition[key] = pageObjectCollection({
         itemScope,
         resetScope,
         item: this._definition
       });
-
-      collectionProxy = new CollectionProxy(create(pageDefinition, { parent: node }), key);
     },
 
     get() {
+      if (!collectionProxy) {
+        collectionProxy = new CollectionProxy(create(pageDefinition, { parent: this }), collectionKey)
+      }
       return collectionProxy;
     },
 
