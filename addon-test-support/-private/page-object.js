@@ -1,8 +1,8 @@
 import { assert } from '@ember/debug';
 
-import { create, collection } from 'ember-cli-page-object';
+import { create } from 'ember-cli-page-object';
 import deepMergeDescriptors from './utils/deep-merge-descriptors';
-import walk from './utils/walk';
+import clone from './utils/clone';
 
 import { useNativeEvents } from 'ember-cli-page-object/extend';
 
@@ -10,42 +10,32 @@ import { useNativeEvents } from 'ember-cli-page-object/extend';
 useNativeEvents();
 
 // Turns a native getter into a Ceibo getter
-function replaceDescriptors(object, property, descriptor) {
+function replaceDescriptors(property, descriptor) {
   const { get, set } = descriptor;
 
   if (!get && !set) return;
 
-  delete object[property];
+  delete descriptor.get;
+  delete descriptor.set;
 
-  object[property] = {
+  descriptor.value = {
     isDescriptor: true,
     get,
     set
   };
 }
 
-// Turns an extendible collection placeholder into an ember-cli-page-object collection
-function replaceCollections(object, property, descriptor) {
-  const { value } = descriptor;
-
-  if (!value || !value.isCollection) return;
-
-  delete value.isCollection;
-
-  object[property] = collection(value);
-}
-
-function extractDefinitions(object, property, descriptor) {
+function extractDefinitions(property, descriptor) {
   const { value } = descriptor;
 
   if (!(value instanceof PageObject)) return;
 
-  object[property] = value.definition;
+  descriptor.value = value.definition;
 }
 
 class PageObject {
   constructor(definition) {
-    this.definition = walk(definition, replaceDescriptors);
+    this.definition = definition;
   }
 
   extend(extension) {
@@ -59,7 +49,7 @@ class PageObject {
   }
 
   create() {
-    return create(walk(this.definition, extractDefinitions, replaceCollections));
+    return create(clone(this.definition, replaceDescriptors, extractDefinitions));
   }
 }
 
