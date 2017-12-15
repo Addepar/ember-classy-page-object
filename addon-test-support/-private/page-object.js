@@ -1,51 +1,39 @@
 import { assert } from '@ember/debug';
 
-import { create, collection } from 'ember-cli-page-object';
-import deepMergeDescriptors from './utils/deep-merge-descriptors';
-import walk from './utils/walk';
-
+import { create } from 'ember-cli-page-object';
+import dsl from 'ember-cli-page-object/-private/dsl';
 import { useNativeEvents } from 'ember-cli-page-object/extend';
+
+import deepMergeDescriptors from './utils/deep-merge-descriptors';
 
 // pre-emptively turn on native events since we'll need them
 useNativeEvents();
 
-// Turns a native getter into a Ceibo getter
-function replaceDescriptors(object, property, descriptor) {
-  const { get, set } = descriptor;
+// See https://github.com/san650/ceibo#examples for more info on how Ceibo
+// builders work.
+const builder = {
+  object(node, blueprintKey, blueprint, defaultBuilder) {
+    let finalizedBlueprint = Object.assign({}, dsl);
 
-  if (!get && !set) return;
+    Object.getOwnPropertyNames(blueprint).forEach((property) => {
+      const { get, value } = Object.getOwnPropertyDescriptor(blueprint, property);
 
-  delete object[property];
+      if (value instanceof PageObject) {
+        finalizedBlueprint[property] = value.definition;
+      } else if (typeof get === 'function') {
+        finalizedBlueprint[property] = { isDescriptor: true, get };
+      } else {
+        finalizedBlueprint[property] = value;
+      }
+    });
 
-  object[property] = {
-    isDescriptor: true,
-    get,
-    set
-  };
-}
-
-// Turns an extendible collection placeholder into an ember-cli-page-object collection
-function replaceCollections(object, property, descriptor) {
-  const { value } = descriptor;
-
-  if (!value || !value.isCollection) return;
-
-  delete value.isCollection;
-
-  object[property] = collection(value);
-}
-
-function extractDefinitions(object, property, descriptor) {
-  const { value } = descriptor;
-
-  if (!(value instanceof PageObject)) return;
-
-  object[property] = value.definition;
+    return defaultBuilder(node, blueprintKey, finalizedBlueprint, defaultBuilder);
+  }
 }
 
 class PageObject {
   constructor(definition) {
-    this.definition = walk(definition, replaceDescriptors);
+    this.definition = definition;
   }
 
   extend(extension) {
@@ -59,7 +47,7 @@ class PageObject {
   }
 
   create() {
-    return create(walk(this.definition, extractDefinitions, replaceCollections));
+    return create(this.definition, { builder });
   }
 }
 
