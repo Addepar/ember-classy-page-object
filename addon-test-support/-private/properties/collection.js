@@ -1,30 +1,62 @@
+import Ceibo from 'ceibo';
+
 import { assert } from '@ember/debug';
-import { create, collection as pageObjectCollection } from 'ember-cli-page-object';
+import { count } from 'ember-cli-page-object';
+import { buildSelector } from 'ember-cli-page-object/extend';
+
+import create from '../utils/create';
 
 class CollectionProxy {
-  constructor(collectionPage, key) {
-    this.item = collectionPage[key];
-    this.enumerable = collectionPage[key]();
+  constructor(definition, parent, key) {
+    this.definition = definition;
+    this.parent = parent;
+    this.key = key;
+
+    this._countPage = create({ count: count(definition.scope) }, { parent });
+
+    this._items = [];
   }
 
   eq(index) {
-    return this.item(index);
+    if (this._items[index] === undefined) {
+      let { definition, parent, key } = this;
+      let scope = buildSelector({}, definition.scope, { at: index });
+
+      let finalizedDefinition = Object.assign(Object.assign({}, definition), { scope });
+
+      let tree = create(finalizedDefinition, { parent });
+
+      // Change the key of the root node
+      Ceibo.meta(tree).key = `${key}(${index})`;
+
+      this._items[index] = tree;
+    }
+
+    return this._items[index];
   }
 
   get length() {
-    return this.enumerable.count;
+    return this._countPage.count;
   }
 
   toArray() {
-    return this.enumerable.toArray();
+    let { length } = this;
+
+    let array = [];
+
+    for (let i = 0; i < length; i++) {
+      array.push(this.eq(i));
+    }
+
+    return array;
   }
 
   map(...args) {
-    return this.enumerable.map(...args);
+    return this.toArray().map(...args);
   }
 
   forEach(...args) {
-    return this.enumerable.forEach(...args);
+    return this.toArray().forEach(...args);
   }
 
   findOne(query) {
@@ -54,7 +86,7 @@ class CollectionProxy {
       assert(`Expected query for findAll to be either an object or function, received: ${query}`, false);
     }
 
-    return this.enumerable.filter(predicate);
+    return this.toArray().filter(predicate);
   }
 }
 
@@ -68,20 +100,7 @@ export function collection(definition) {
     isDescriptor: true,
 
     setup(node, key) {
-      const {
-        scope: itemScope,
-        resetScope
-      } = this._definition;
-
-      let pageDefinition = {};
-
-      pageDefinition[key] = pageObjectCollection({
-        itemScope,
-        resetScope,
-        item: this._definition
-      });
-
-      let collectionProxy = new CollectionProxy(create(pageDefinition, { parent: node }), key);
+      let collectionProxy = new CollectionProxy(definition, node, key);
 
       collectionProxyMap.set(node, collectionProxy);
     },
