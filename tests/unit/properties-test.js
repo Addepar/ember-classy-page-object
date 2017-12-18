@@ -23,3 +23,26 @@ test('it properly merges collections', function(assert) {
   assert.equal(page.definition.content._definition.bar, 456);
   assert.equal(page.definition.content._definition.baz, 789);
 });
+
+test('getters can be used in collection definitions', function(assert) {
+  assert.expect(1);
+
+  let page = PageObject.extend({
+    foo: 123,
+    content: collection({
+      get foo() {
+        assert.ok(false, 'getter called prematurely')
+      }
+    })
+  }).extend({
+    foo: 456,
+    content: collection({
+      get bar() {
+        return 123;
+      }
+    })
+  }).create();
+
+  page.content.eq(0);
+  assert.equal(page.content.eq(0).bar, 123, 'getter gets merged correctly');
+});

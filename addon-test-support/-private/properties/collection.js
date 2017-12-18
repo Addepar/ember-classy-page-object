@@ -5,6 +5,7 @@ import { count } from 'ember-cli-page-object';
 import { buildSelector } from 'ember-cli-page-object/extend';
 
 import create from '../utils/create';
+import extractGetters from '../utils/extract-getters';
 
 class CollectionProxy {
   constructor(definition, parent, key) {
@@ -22,7 +23,9 @@ class CollectionProxy {
       let { definition, parent, key } = this;
       let scope = buildSelector({}, definition.scope, { at: index });
 
-      let finalizedDefinition = Object.assign(Object.assign({}, definition), { scope });
+      let finalizedDefinition = extractGetters(definition);
+
+      finalizedDefinition.scope = scope;
 
       let tree = create(finalizedDefinition, { parent });
 
