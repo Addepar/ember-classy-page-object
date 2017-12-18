@@ -16,6 +16,16 @@ test('it properly converts descriptors', function(assert) {
   assert.equal(page.foo, 'bar', 'getter converted correctly');
 });
 
+test('descriptors are not called prematurely', function(assert) {
+  assert.expect(0);
+
+  PageObject.extend({
+    get foo() {
+      assert.ok(false, 'getter called prematurely');
+    }
+  }).create();
+});
+
 test('it properly merges subcontexts', function(assert) {
   assert.expect(3);
 
