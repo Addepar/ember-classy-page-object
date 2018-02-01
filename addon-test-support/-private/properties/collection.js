@@ -24,6 +24,10 @@ class CollectionProxy {
       let scope = buildSelector({}, definition.scope, { at: index });
 
       let finalizedDefinition = extractGetters(definition);
+      // This is the case when definition is a PageObject itself
+      if (finalizedDefinition.definition !== undefined) {
+        finalizedDefinition = finalizedDefinition.definition;
+      }
 
       finalizedDefinition.scope = scope;
 
