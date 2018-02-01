@@ -64,20 +64,24 @@ test('collections do not share instances of proxies', function(assert) {
 
 test('Collection works with PageObject definition', function(assert) {
   let Foo = PageObject.extend({
-    scope: 'foo-page-object',
-
-    name() {
-      return 'This is Foo class';
-    }
+    scope: 'foo-page-object'
   });
   let bar = PageObject.extend({
-    foos: collection(Foo.scope('[data-test-simple-list-item]'))
+    scope: '[data-test-simple-list-wrapper]',
+
+    list: {
+      scope: '[data-test-simple-list]',
+      foos: collection(Foo.scope('[data-test-simple-list-item]'))
+    }
   }).create();
 
   visit('/');
 
   andThen(() => {
-    assert.equal(bar.foos.eq(0).name(), 'This is Foo class',
-      'Collection works with Page Object definition');
+    assert.equal(
+      bar.list.foos.eq(0).isPresent,
+      true,
+      'Collection works with Page Object definition'
+    );
   });
 });
