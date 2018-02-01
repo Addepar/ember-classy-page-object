@@ -71,9 +71,7 @@ test('Collection works with PageObject definition', function(assert) {
     }
   });
   let bar = PageObject.extend({
-    foos: collection(Object.assign({
-      scope: '[data-test-simple-list-item]',
-    }, Foo))
+    foos: collection(Foo.scope('[data-test-simple-list-item]'))
   }).create();
 
   visit('/');
