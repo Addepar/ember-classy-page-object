@@ -10,6 +10,10 @@ import extractGetters from '../utils/extract-getters';
 class CollectionProxy {
   constructor(definition, parent, key) {
     this.definition = definition;
+    if (this.definition.definition !== undefined) {
+      // This is the case when definition is a PageObject itself
+      this.definition = this.definition.definition;
+    }
     this.parent = parent;
     this.key = key;
 
@@ -24,11 +28,6 @@ class CollectionProxy {
       let scope = buildSelector({}, definition.scope, { at: index });
 
       let finalizedDefinition = extractGetters(definition);
-      // This is the case when definition is a PageObject itself
-      if (finalizedDefinition.definition !== undefined) {
-        finalizedDefinition = finalizedDefinition.definition;
-      }
-
       finalizedDefinition.scope = scope;
 
       let tree = create(finalizedDefinition, { parent });

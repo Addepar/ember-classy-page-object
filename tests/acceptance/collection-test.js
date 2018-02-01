@@ -71,13 +71,18 @@ test('Collection works with PageObject definition', function(assert) {
     }
   });
   let bar = PageObject.extend({
-    foos: collection(Foo.scope('[data-test-simple-list-item]'))
+    scope: '[data-test-simple-list-wrapper]',
+
+    list: {
+      scope: '[data-test-simple-list]',
+      foos: collection(Foo.scope('[data-test-simple-list-item]'))
+    }
   }).create();
 
   visit('/');
 
   andThen(() => {
-    assert.equal(bar.foos.eq(0).name(), 'This is Foo class',
+    assert.equal(bar.list.foos.eq(0).isPresent, true,
       'Collection works with Page Object definition');
   });
 });
