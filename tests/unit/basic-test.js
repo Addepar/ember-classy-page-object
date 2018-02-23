@@ -47,15 +47,78 @@ test('it properly merges subcontexts', function(assert) {
   assert.equal(page.content.baz, 789);
 });
 
+test('it properly merges subcontexts that are PageObjects', function(assert) {
+  assert.expect(3);
+
+  let page = PageObject.extend({
+    foo: 123,
+    content: PageObject.extend({
+      bar: 456
+    })
+  }).extend({
+    content: PageObject.extend({
+      get baz() {
+        return 789;
+      }
+    })
+  }).create();
+
+  assert.equal(page.foo, 123);
+  assert.equal(page.content.bar, 456);
+  assert.equal(page.content.baz, 789);
+});
+
+test('it properly merges normal objects into PageObjects', function(assert) {
+  assert.expect(3);
+
+  let page = PageObject.extend({
+    foo: 123,
+    content: PageObject.extend({
+      bar: 456
+    })
+  }).extend({
+    content: {
+      get baz() {
+        return 789;
+      }
+    }
+  }).create();
+
+  assert.equal(page.foo, 123);
+  assert.equal(page.content.bar, 456);
+  assert.equal(page.content.baz, 789);
+});
+
+test('it properly merges PageObjects into normal objects', function(assert) {
+  assert.expect(3);
+
+  let page = PageObject.extend({
+    foo: 123,
+    content: {
+      bar: 456
+    }
+  }).extend({
+    content: PageObject.extend({
+      get baz() {
+        return 789;
+      }
+    })
+  }).create();
+
+  assert.equal(page.foo, 123);
+  assert.equal(page.content.bar, 456);
+  assert.equal(page.content.baz, 789);
+});
+
 test('it adds scope with scope shortcut helper', function(assert) {
   assert.expect(2);
 
-  let page = PageObject.extend({
-    scope: 'foo'
+  let Page = PageObject.extend({
+    foo: 123
   });
 
-  let scopedPage = page.scope('bar');
+  let ScopedPage = Page.scope('bar');
 
-  assert.equal(page.definition.scope, 'foo');
-  assert.equal(scopedPage.definition.scope, 'bar');
+  assert.equal(typeof Page.scope, 'function');
+  assert.equal(ScopedPage.definition.scope, 'bar');
 });

@@ -63,15 +63,12 @@ test('collections do not share instances of proxies', function(assert) {
 
 
 test('Collection works with PageObject definition', function(assert) {
-  let Foo = PageObject.extend({
-    scope: 'foo-page-object'
-  });
   let bar = PageObject.extend({
     scope: '[data-test-simple-list-wrapper]',
 
     list: {
       scope: '[data-test-simple-list]',
-      foos: collection(Foo.scope('[data-test-simple-list-item]'))
+      foos: collection(PageObject.scope('[data-test-simple-list-item]'))
     }
   }).create();
 

@@ -12,7 +12,13 @@ useNativeEvents();
 export class PageObject {
   constructor(definition) {
     this.definition = definition;
-    this.__isPageObjectClass = true;
+
+    Object.defineProperty(this, '__isPageObjectClass', {
+      enumerable: true,
+      configurable: false,
+      writable: false,
+      value: true
+    });
   }
 
   extend(extension) {
@@ -30,7 +36,7 @@ export class PageObject {
   }
 
   create() {
-    return create(this.definition);
+    return create(this);
   }
 }
 
