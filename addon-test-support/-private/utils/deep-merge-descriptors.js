@@ -14,15 +14,20 @@ export default function deepMergeDescriptors(dest, src) {
 
       // Deep merge if both are objects
       if (isObject(destValue) && isObject(srcValue)) {
-        descriptor.value = deepMergeDescriptors(destValue, srcValue);
-
-      // Defer to the 'dest' value otherwise (ie, do not redefine property)
+        if (destValue.__isPageObjectClass && !srcValue.__isPageObjectClass) {
+          descriptor.value = deepMergeDescriptors(destValue, { definition: srcValue });
+        } else if (!destValue.__isPageObjectClass && srcValue.__isPageObjectClass) {
+          descriptor.value = deepMergeDescriptors(destValue, srcValue.definition);
+        } else {
+          descriptor.value = deepMergeDescriptors(destValue, srcValue);
+        }
       } else {
+        // Defer to the 'dest' value otherwise (ie, do not redefine property)
         return;
       }
 
-    // The property only exists on 'src'
     } else if (isObject(srcValue)) {
+      // The property only exists on 'src'
       descriptor.value = deepMergeDescriptors({}, srcValue);
     }
 

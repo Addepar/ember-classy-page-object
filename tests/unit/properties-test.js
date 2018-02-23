@@ -2,7 +2,7 @@ import PageObject, { collection } from 'ember-classy-page-object';
 
 import { module, test } from 'ember-qunit';
 
-module('basic tests');
+module('properties tests');
 
 test('it properly merges collections', function(assert) {
   assert.expect(3);

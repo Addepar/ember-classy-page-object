@@ -5,12 +5,14 @@ const builder = {
   object(node, blueprintKey, blueprint, defaultBuilder) {
     let finalizedBlueprint = Object.assign({}, dsl);
 
+    if (blueprint.__isPageObjectClass) {
+      blueprint = blueprint.definition;
+    }
+
     Object.getOwnPropertyNames(blueprint).forEach((property) => {
       const { get, value } = Object.getOwnPropertyDescriptor(blueprint, property);
 
-      if (value && value.__isPageObjectClass === true) {
-        finalizedBlueprint[property] = value.definition;
-      } else if (typeof get === 'function') {
+      if (typeof get === 'function') {
         finalizedBlueprint[property] = { isDescriptor: true, get };
       } else {
         finalizedBlueprint[property] = value;
