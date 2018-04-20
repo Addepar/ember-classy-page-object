@@ -17,7 +17,7 @@ class CollectionProxy {
     this.parent = parent;
     this.key = key;
 
-    this._countPage = create({ count: count(definition.scope) }, { parent });
+    this._countPage = create({ count: count(this.definition.scope) }, { parent });
 
     this._items = [];
   }
