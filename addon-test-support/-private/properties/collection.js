@@ -1,64 +1,49 @@
 import Ceibo from 'ceibo';
 
 import { assert } from '@ember/debug';
-import { count } from 'ember-cli-page-object';
-import { buildSelector } from 'ember-cli-page-object/extend';
-
-import create from '../utils/create';
-import extractGetters from '../utils/extract-getters';
+import { create, collection as ecpoCollection } from 'ember-cli-page-object';
 
 class CollectionProxy {
-  constructor(definition, parent, key) {
-    this.definition = definition;
-    if (this.definition.definition !== undefined) {
-      // This is the case when definition is a PageObject itself
-      this.definition = this.definition.definition;
-    }
-    this.parent = parent;
-    this.key = key;
+  constructor(scope, definition, key, parent) {
+    this._key = key;
+    this._page = create({
+      [key]: ecpoCollection(scope, definition)
+    }, { parent });
 
-    this._countPage = create({ count: count(this.definition.scope) }, { parent });
-
-    this._items = [];
+    // Hack: Trick the page object into thinking it has a different parent
+    this._collection.parent = parent;
   }
 
-  eq(index) {
-    if (this._items[index] === undefined) {
-      let { definition, parent, key } = this;
-      let scope = buildSelector({}, definition.scope, { at: index });
+  get _collection() {
+    return this._page[this._key];
+  }
 
-      let finalizedDefinition = extractGetters(definition);
-      finalizedDefinition.scope = scope;
-
-      let tree = create(finalizedDefinition, { parent });
-
-      // Change the key of the root node
-      Ceibo.meta(tree).key = `${key}(${index})`;
-
-      this._items[index] = tree;
-    }
-
-    return this._items[index];
+  objectAt(index) {
+    return this._collection.objectAt(index);
   }
 
   get length() {
-    return this._countPage.count;
+    return this._collection.length;
   }
 
   toArray() {
-    let { length } = this;
+    return this._collection.toArray();
+  }
 
-    let array = [];
+  filter(...args) {
+    return this._collection.filter(...args);
+  }
 
-    for (let i = 0; i < length; i++) {
-      array.push(this.eq(i));
-    }
-
-    return array;
+  filterBy(...args) {
+    return this._collection.filterBy(...args);
   }
 
   map(...args) {
-    return this.toArray().map(...args);
+    return this._collection.map(...args);
+  }
+
+  mapBy(...args) {
+    return this._collection.mapBy(...args);
   }
 
   forEach(...args) {
@@ -92,21 +77,31 @@ class CollectionProxy {
       assert(`Expected query for findAll to be either an object or function, received: ${query}`, false);
     }
 
-    return this.toArray().filter(predicate);
+    return this.filter(predicate);
   }
 }
 
-export function collection(definition) {
+export function collection(scopeOrDefinition, definitionOrNull) {
   // Collection proxies need to be created for each of instances of this collection,
   // and there may be many since page objects can be reused in many locations. We use
   // a WeakMap to store each instance relative to its node.
   let collectionProxyMap = new WeakMap();
 
+  let definition = definitionOrNull || scopeOrDefinition;
+
+  if (definition._definition) {
+    definition = definition._definition;
+  }
+
+  let scope = definitionOrNull ? scopeOrDefinition : definition.scope;
+
+  delete definition.scope;
+
   return {
     isDescriptor: true,
 
     setup(node, key) {
-      let collectionProxy = new CollectionProxy(definition, node, key);
+      let collectionProxy = new CollectionProxy(this._scope, this._definition, key, node);
 
       collectionProxyMap.set(node, collectionProxy);
     },
@@ -115,6 +110,7 @@ export function collection(definition) {
       return collectionProxyMap.get(this);
     },
 
+    _scope: scope,
     _definition: definition
   };
 }

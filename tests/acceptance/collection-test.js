@@ -17,14 +17,15 @@ const SimpleListPage = PageObject.extend({
 moduleForAcceptance('Acceptance | collection');
 
 test('collection works as expected', function(assert) {
-  const list = SimpleListPage.create();
+  const list = new SimpleListPage();
 
   visit('/');
 
   andThen(() => {
     assert.equal(list.caption, 'Hello, List!');
-    assert.equal(list.items.eq(0).text, 'Foo');
+    assert.equal(list.items.objectAt(0).text, 'Foo');
     assert.deepEqual(list.items.map((i) => i.text), ['Foo', 'Bar', 'Baz']);
+    assert.deepEqual(list.items.mapBy('text'), ['Foo', 'Bar', 'Baz']);
 
     let forEachText = [];
     list.items.forEach((i) => forEachText.push(i.text));
@@ -43,40 +44,40 @@ test('collection works as expected', function(assert) {
 });
 
 test('collections do not share instances of proxies', function(assert) {
-  let page = PageObject.extend({
+  let page = new PageObject({
     scope: 'foo-bar-baz',
 
     simpleList: SimpleListPage
-  }).create();
+  });
 
   // create a simple list to side-effect
-  SimpleListPage.create();
+  new SimpleListPage();
 
   visit('/');
 
   andThen(() => {
     assert.throws(() => {
-      assert.equal(page.simpleList.items.eq(0).text, 'Foo')
+      assert.equal(page.simpleList.items.objectAt(0).text, 'Foo')
     }, /foo-bar-baz \[data-test-simple-list\] \[data-test-simple-list-item\]:eq\(0\)/);
   });
 });
 
 
 test('Collection works with PageObject definition', function(assert) {
-  let bar = PageObject.extend({
+  let bar = new PageObject({
     scope: '[data-test-simple-list-wrapper]',
 
     list: {
       scope: '[data-test-simple-list]',
-      foos: collection(PageObject.scope('[data-test-simple-list-item]'))
+      foos: collection(PageObject.extend('[data-test-simple-list-item]'))
     }
-  }).create();
+  });
 
   visit('/');
 
   andThen(() => {
     assert.equal(
-      bar.list.foos.eq(0).isPresent,
+      bar.list.foos.objectAt(0).isPresent,
       true,
       'Collection works with Page Object definition'
     );

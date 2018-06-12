@@ -29,7 +29,7 @@ const DoubleTogglePage = PageObject.extend({
 moduleForAcceptance('Acceptance | simple');
 
 test('visiting /', function(assert) {
-  const doubleToggle = DoubleTogglePage.create();
+  const doubleToggle = new DoubleTogglePage();
 
   visit('/');
 

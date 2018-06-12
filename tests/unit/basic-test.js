@@ -7,11 +7,11 @@ module('basic tests');
 test('it properly converts descriptors', function(assert) {
   assert.expect(1);
 
-  let page = PageObject.extend({
+  let page = new PageObject({
     get foo() {
       return 'bar';
     }
-  }).create();
+  });
 
   assert.equal(page.foo, 'bar', 'getter converted correctly');
 });
@@ -19,17 +19,17 @@ test('it properly converts descriptors', function(assert) {
 test('descriptors are not called prematurely', function(assert) {
   assert.expect(0);
 
-  PageObject.extend({
+  new PageObject({
     get foo() {
       assert.ok(false, 'getter called prematurely');
     }
-  }).create();
+  });
 });
 
 test('it properly merges subcontexts', function(assert) {
   assert.expect(3);
 
-  let page = PageObject.extend({
+  let Page = PageObject.extend({
     foo: 123,
     content: {
       bar: 456
@@ -40,7 +40,9 @@ test('it properly merges subcontexts', function(assert) {
         return 789;
       }
     }
-  }).create();
+  });
+
+  let page = new Page();
 
   assert.equal(page.foo, 123);
   assert.equal(page.content.bar, 456);
@@ -50,7 +52,7 @@ test('it properly merges subcontexts', function(assert) {
 test('it properly merges subcontexts that are PageObjects', function(assert) {
   assert.expect(3);
 
-  let page = PageObject.extend({
+  let Page = PageObject.extend({
     foo: 123,
     content: PageObject.extend({
       bar: 456
@@ -61,7 +63,9 @@ test('it properly merges subcontexts that are PageObjects', function(assert) {
         return 789;
       }
     })
-  }).create();
+  });
+
+  let page = new Page();
 
   assert.equal(page.foo, 123);
   assert.equal(page.content.bar, 456);
@@ -71,7 +75,7 @@ test('it properly merges subcontexts that are PageObjects', function(assert) {
 test('it properly merges normal objects into PageObjects', function(assert) {
   assert.expect(3);
 
-  let page = PageObject.extend({
+  let Page = PageObject.extend({
     foo: 123,
     content: PageObject.extend({
       bar: 456
@@ -82,7 +86,9 @@ test('it properly merges normal objects into PageObjects', function(assert) {
         return 789;
       }
     }
-  }).create();
+  });
+
+  let page = new Page();
 
   assert.equal(page.foo, 123);
   assert.equal(page.content.bar, 456);
@@ -92,7 +98,7 @@ test('it properly merges normal objects into PageObjects', function(assert) {
 test('it properly merges PageObjects into normal objects', function(assert) {
   assert.expect(3);
 
-  let page = PageObject.extend({
+  let Page = PageObject.extend({
     foo: 123,
     content: {
       bar: 456
@@ -103,22 +109,21 @@ test('it properly merges PageObjects into normal objects', function(assert) {
         return 789;
       }
     })
-  }).create();
+  });
+
+  let page = new Page();
 
   assert.equal(page.foo, 123);
   assert.equal(page.content.bar, 456);
   assert.equal(page.content.baz, 789);
 });
 
-test('it adds scope with scope shortcut helper', function(assert) {
-  assert.expect(2);
-
+test('Passing a string to extend adds scope', function(assert) {
   let Page = PageObject.extend({
     foo: 123
   });
 
-  let ScopedPage = Page.scope('bar');
+  let ScopedPage = Page.extend('bar');
 
-  assert.equal(typeof Page.scope, 'function');
-  assert.equal(ScopedPage.definition.scope, 'bar');
+  assert.equal(ScopedPage._definition.scope, 'bar');
 });
