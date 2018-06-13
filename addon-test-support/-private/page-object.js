@@ -1,43 +1,45 @@
 import { assert } from '@ember/debug';
 
+import { create } from 'ember-cli-page-object';
 import { useNativeEvents } from 'ember-cli-page-object/extend';
 
-import create from './utils/create';
-import deepMergeDescriptors from './utils/deep-merge-descriptors';
-import extractGetters from './utils/extract-getters';
+import { extractPageObjects, extractGetters, deepMergeDescriptors } from './utils/descriptors';
 
 // pre-emptively turn on native events since we'll need them
 useNativeEvents();
 
-export class PageObject {
-  constructor(definition) {
-    this.definition = definition;
+function extendDefinition(definition, extension) {
+  assert('must provide a string or an object to extend', extension !== null && (typeof extension === 'string' || typeof extension === 'object'));
+  assert('must provide a definition with atleast one key when extending a PageObject', extension && Object.keys(extension).length > 0);
 
-    Object.defineProperty(this, '__isPageObjectClass', {
-      enumerable: true,
-      configurable: false,
-      writable: false,
-      value: true
-    });
+  let finalizedDefinition = typeof extension === 'string' ? { scope: extension } : extension;
+
+  finalizedDefinition = extractPageObjects(finalizedDefinition);
+  finalizedDefinition = extractGetters(finalizedDefinition);
+
+  finalizedDefinition = deepMergeDescriptors(
+    finalizedDefinition, definition
+  );
+
+  return finalizedDefinition;
+}
+
+export default class PageObject {
+  constructor(extension) {
+    let definition = this.constructor._definition;
+
+    definition = extension ? extendDefinition(definition, extension) : definition;
+
+    return create(definition);
   }
 
-  extend(extension) {
-    assert('must provide a definition with atleast one key when extending a PageObject', extension && Object.keys(extension).length > 0);
+  static extend(extension) {
+    let Page = class extends this {};
 
-    let finalizedDefinition = deepMergeDescriptors(
-      extractGetters(extension), this.definition
-    );
+    Page._definition = extendDefinition(this._definition, extension);
 
-    return new PageObject(finalizedDefinition);
-  }
-
-  scope(scope) {
-    return this.extend({ scope });
-  }
-
-  create() {
-    return create(this);
+    return Page;
   }
 }
 
-export default new PageObject({});
+PageObject._definition = {};

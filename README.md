@@ -35,7 +35,7 @@ const ToggleButtonPage = PageObject.extend({
 module('toggle button');
 
 test('can toggle', function(assert) {
-	const myToggleButton = ToggleButtonPage.create();
+	const myToggleButton = new ToggleButtonPage();
 
 	myToggleButton.toggle();
 
@@ -62,7 +62,7 @@ const DoubleToggleButtonPage = PageObject.extend({
   })
 });
 
-const myDoubleToggle = DoubleToggleButtonPage.create();
+const myDoubleToggle = new DoubleToggleButtonPage();
 
 myDoubleToggle.firstToggle.toggle();
 // etc...
@@ -129,7 +129,7 @@ collection simplifies the collection helper.
 ```js
 // before
 
-page = create({
+let page = create({
   rows: collection({
     scope: 'table',
 
@@ -144,7 +144,7 @@ page = create({
 
 // after
 
-page = PageObject.extend({
+let Page = PageObject.extend({
   table: {
     scope: 'table',
 
@@ -154,7 +154,9 @@ page = PageObject.extend({
       lastName: text('td.last-name')
     })
   }
-}).create();
+});
+
+let page = new Page();
 ```
 
 Collections now return an instance of a class with the following public API methods:
