@@ -161,7 +161,7 @@ let page = new Page();
 
 Collections now return an instance of a class with the following public API methods:
 
-* `eq(index: number): Page`: Return the page for the item at the specified index
+* `objectAt(index: number): Page`: Return the page for the item at the specified index
 * `forEach(fn: (item, index, list) => void): void`: Run a function for every item in the collection
 * `map(fn: (item, index, list) => any): Array<any>`: Map a transform over every item in the collection
 * `findAll(query: object | fn(item, index, list) => boolean): Array<Page>`: Find all items in the collection
