@@ -29,6 +29,10 @@ class CollectionProxy {
   toArray() {
     return this._collection.toArray();
   }
+  
+  every(...args) {
+    this.map(...args).every(x => x);
+  }
 
   filter(...args) {
     return this._collection.filter(...args);
