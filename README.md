@@ -1,6 +1,6 @@
 # ember-classy-page-object
 
-Provides a super simple class-like wrapper around ember-cli-page-object.
+Provides a super simple class-like wrapper around [ember-cli-page-object](https://github.com/san650/ember-cli-page-object).
 
 ## Usage
 
@@ -89,6 +89,7 @@ Classy page object re-exports all of the helpers from ember-cli-page-object with
   * `default as PageObject`
   * `alias`
   * `attribute`
+  * `blurrable`
   * `clickOnText`
   * `clickable`
   * `contains`
