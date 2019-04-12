@@ -1,5 +1,6 @@
 export {
   attribute,
+  blurrable,
   clickOnText,
   clickable,
   contains,
