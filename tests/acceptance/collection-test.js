@@ -37,9 +37,9 @@ test('collection works as expected', function(assert) {
 
     assert.equal(list.items.findOne((i) => i.isActive).text, 'Bar');
     assert.equal(list.items.findOne({ text: 'Bar', isActive: true }).text, 'Bar');
-    assert.equal(list.items.findOne({ text: 'Foo', isActive: true }), undefined);
+    assert.throws(() => assert.equal(list.items.findOne({ text: 'Foo', isActive: true }), /Expected at most one result from 'findOne' query in 'foos' collection, but found 0/));
 
-    assert.throws(() => list.items.findOne((i) => i.isActive || i.text === 'Foo'), /Expected at most one result from findOne query, but found 2/);
+    assert.throws(() => list.items.findOne((i) => i.isActive || i.text === 'Foo'), /Expected at most one result from 'findOne' query in 'items' collection, but found 2/);
   });
 });
 
@@ -61,7 +61,6 @@ test('collections do not share instances of proxies', function(assert) {
     }, /foo-bar-baz \[data-test-simple-list\] \[data-test-simple-list-item\]:eq\(0\)/);
   });
 });
-
 
 test('Collection works with PageObject definition', function(assert) {
   let bar = new PageObject({
