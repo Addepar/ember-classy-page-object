@@ -53,7 +53,7 @@ class CollectionProxy {
   findOne(query) {
     let result = this.findAll(query);
 
-    assert(`Expected at most one result from findOne query, but found ${result.length}`, result.length <= 1);
+    assert(`Expected at most one result from 'findOne' query in '${this._collection.key}' collection, but found ${result.length}`, result.length === 1);
 
     return result[0];
   }
