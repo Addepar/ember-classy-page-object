@@ -1,7 +1,5 @@
-import Ceibo from 'ceibo';
-
-import { assert } from '@ember/debug';
 import { create, collection as ecpoCollection } from 'ember-cli-page-object';
+import { assert, inspect } from '@ember/debug';
 
 class CollectionProxy {
   constructor(scope, definition, key, parent) {
@@ -53,7 +51,12 @@ class CollectionProxy {
   findOne(query) {
     let result = this.findAll(query);
 
-    assert(`Expected at most one result from 'findOne' query in '${this._collection.key}' collection, but found ${result.length}`, result.length === 1);
+    assert(
+      `Expected at most one result from 'findOne' query in '${
+        this._collection.key
+      }' collection, but found ${result.length} using query ${inspect(query)}`,
+      result.length === 1
+    );
 
     return result[0];
   }
@@ -62,7 +65,7 @@ class CollectionProxy {
     let predicate;
 
     if (typeof query === 'object') {
-      predicate = (item) => {
+      predicate = item => {
         let isMatch = true;
 
         for (let key in query) {
@@ -70,11 +73,16 @@ class CollectionProxy {
         }
 
         return isMatch;
-      }
+      };
     } else if (typeof query === 'function') {
       predicate = query;
     } else {
-      assert(`Expected query for findAll to be either an object or function, received: ${query}`, false);
+      assert(
+        `Expected query for findAll to be either an object or function, received: ${inspect(
+          query
+        )}`,
+        false
+      );
     }
 
     return this.filter(predicate);
