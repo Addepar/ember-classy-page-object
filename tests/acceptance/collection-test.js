@@ -2,7 +2,6 @@ import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 
 import PageObject, { collection, hasClass, text } from 'ember-classy-page-object';
-// import { findElement } from 'ember-classy-page-object/extend';
 
 const SimpleListPage = PageObject.extend({
   scope: '[data-test-simple-list]',
@@ -37,9 +36,8 @@ test('collection works as expected', function(assert) {
 
     assert.equal(list.items.findOne((i) => i.isActive).text, 'Bar');
     assert.equal(list.items.findOne({ text: 'Bar', isActive: true }).text, 'Bar');
-    assert.throws(() => assert.equal(list.items.findOne({ text: 'Foo', isActive: true }), /Expected at most one result from 'findOne' query in 'foos' collection, but found 0/));
-
-    assert.throws(() => list.items.findOne((i) => i.isActive || i.text === 'Foo'), /Expected at most one result from 'findOne' query in 'items' collection, but found 2/);
+    assert.throws(() => list.items.findOne({ text: 'Foo', isActive: true }), /Expected at most one result.*'findOne' query in 'items' collection.*but found 0.*using query.*isActive: true/);
+    assert.throws(() => list.items.findOne((i) => i.isActive || i.text === 'Foo'), /Expected at most one result.*'findOne' query in 'items' collection.*but found 2/);
   });
 });
 
@@ -57,7 +55,7 @@ test('collections do not share instances of proxies', function(assert) {
 
   andThen(() => {
     assert.throws(() => {
-      assert.equal(page.simpleList.items.objectAt(0).text, 'Foo')
+      page.simpleList.items.objectAt(0).text
     }, /foo-bar-baz \[data-test-simple-list\] \[data-test-simple-list-item\]:eq\(0\)/);
   });
 });
