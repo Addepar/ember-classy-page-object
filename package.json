@@ -11,40 +11,42 @@
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "github:pzuraq/ember-classy-page-object",
+  "repository": "https://github.com/Addepar/ember-classy-page-object",
   "scripts": {
     "build": "ember build",
-    "start": "ember server",
-    "test": "ember try:each"
+    "start": "ember serve",
+    "test": "ember try:each",
+    "test:ember": "ember test"
   },
   "dependencies": {
     "broccoli-funnel": "^2.0.1",
-    "ember-cli-babel": "^6.6.0",
-    "ember-cli-page-object": "^1.15.4"
+    "ember-cli-babel": "^7.12.0",
+    "ember-cli-page-object": "^1.17.5"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
-    "ember-ajax": "^3.0.0",
-    "ember-cli": "~2.16.2",
-    "ember-cli-dependency-checker": "^2.0.0",
-    "ember-cli-eslint": "^4.0.0",
-    "ember-cli-htmlbars": "^2.0.1",
-    "ember-cli-htmlbars-inline-precompile": "^1.0.0",
-    "ember-cli-inject-live-reload": "^1.4.1",
-    "ember-cli-qunit": "^4.0.0",
+    "ember-cli": "~3.1.4",
+    "ember-cli-dependency-checker": "^3.2.0",
+    "ember-cli-eslint": "^5.1.0",
+    "ember-cli-htmlbars": "^3.0.1",
+    "ember-cli-htmlbars-inline-precompile": "^2.1.0",
+    "ember-cli-inject-live-reload": "^2.0.1",
     "ember-cli-shims": "^1.1.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^2.0.0",
     "ember-disable-prototype-extensions": "^1.1.2",
     "ember-export-application-global": "^2.0.0",
-    "ember-load-initializers": "^1.0.0",
-    "ember-resolver": "^4.0.0",
-    "ember-source": "~2.16.0",
-    "ember-test-selectors": "^0.3.8",
+    "ember-qunit": "^4.5.1",
+    "ember-load-initializers": "^2.0.0",
+    "ember-resolver": "^5.1.1",
+    "ember-source": "~3.24.0",
+    "ember-source-channel-url": "^1.0.1",
+    "ember-test-selectors": "^5.0.0",
+    "ember-try": "^1.1.0",
     "loader.js": "^4.2.3"
   },
   "engines": {
-    "node": "8.* || >= 10.*"
+    "node": ">= 10.*"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
