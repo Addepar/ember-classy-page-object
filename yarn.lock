@@ -2062,18 +2062,18 @@ ember-cli-normalize-entity-name@^1.0.0:
   dependencies:
     silent-error "^1.0.0"
 
-ember-cli-page-object@^1.15.4:
-  version "1.15.4"
-  resolved "https://registry.yarnpkg.com/ember-cli-page-object/-/ember-cli-page-object-1.15.4.tgz#94adeb1d39814fdd617ab1472e8fedbc4fa2f5b1"
-  integrity sha512-eLANR2+CQsGCxQywtBpYC2oHN+UH9jg99BbofMheUYdl1v5BGYnZUVh44X8A/QA+5ohuJuQDVmlQPQsWcsrtwQ==
+ember-cli-page-object@^1.17.5:
+  version "1.17.5"
+  resolved "https://registry.yarnpkg.com/ember-cli-page-object/-/ember-cli-page-object-1.17.5.tgz#a6b555470cc36e40b622047c6bcf6319deb6ae07"
+  integrity sha512-1fW4TF4JmoNDtH3V5wuSbcvlFQtl15unGJdOUjbP3HMl/pPDqGeTo4o0Bnoj8LQwARua5A34T5FNWWbAN9YHfQ==
   dependencies:
     broccoli-file-creator "^2.1.1"
     broccoli-merge-trees "^2.0.0"
     ceibo "~2.0.0"
     ember-cli-babel "^6.16.0"
     ember-cli-node-assets "^0.2.2"
-    ember-native-dom-helpers "^0.6.3"
-    jquery "^3.2.1"
+    ember-native-dom-helpers "^0.7.0"
+    jquery "^3.4.1"
     rsvp "^4.7.0"
 
 ember-cli-path-utils@^1.0.0:
@@ -2276,10 +2276,10 @@ ember-load-initializers@^1.0.0:
   dependencies:
     ember-cli-babel "^6.0.0-beta.7"
 
-ember-native-dom-helpers@^0.6.3:
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/ember-native-dom-helpers/-/ember-native-dom-helpers-0.6.3.tgz#31c88b6eb8e1bb99ee594d19de8f0270d1d5eb35"
-  integrity sha512-eQTHSV4OBS5YmGLvjgCcit79akG98YVRrcNq/rOVntPX1oq0LQqlPiXtDvDcqSdDur8GyUz6jY1Jy8Y6DLFiSw==
+ember-native-dom-helpers@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/ember-native-dom-helpers/-/ember-native-dom-helpers-0.7.0.tgz#98a87c11a391cec5c12382a4857e59ea2fb4b00a"
+  integrity sha512-ySJRGRhwYIWUAZKilB8xEcIatP9wKfEBX6JFG8bG4Ck7GvA0eau265hTGZz/+ntZuwcY4HrzSNkwimlHx4cM/A==
   dependencies:
     broccoli-funnel "^1.1.0"
     ember-cli-babel "^6.6.0"
@@ -3461,6 +3461,11 @@ istextorbinary@2.1.0:
 jquery@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
+
+jquery@^3.4.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.5.1.tgz#d7b4d08e1bfdb86ad2f1a3d039ea17304717abb5"
+  integrity sha512-XwIBPqcMn57FxfT+Go5pzySnm4KWkT1Tv7gjrpT1srtf8Weynl6R273VJ5GjkRb51IzMp5nbaPjJXMWeju2MKg==
 
 js-reporters@1.2.0:
   version "1.2.0"
