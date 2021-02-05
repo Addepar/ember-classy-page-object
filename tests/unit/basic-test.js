@@ -22,6 +22,7 @@ test('descriptors are not called prematurely', function(assert) {
   new PageObject({
     get foo() {
       assert.ok(false, 'getter called prematurely');
+      return 123;
     }
   });
 });

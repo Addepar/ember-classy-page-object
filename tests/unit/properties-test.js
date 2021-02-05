@@ -31,6 +31,7 @@ test('getters can be used in collection definitions', function(assert) {
       scope: 'foo',
       get foo() {
         assert.ok(false, 'getter called prematurely')
+        return 123;
       },
       get bar() {
         return 123;

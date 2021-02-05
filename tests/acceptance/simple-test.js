@@ -1,5 +1,7 @@
-import { test } from 'qunit';
-import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
+import { visit } from '@ember/test-helpers';
+import wait from 'ember-test-helpers/wait';
 
 import PageObject, { clickable } from 'ember-classy-page-object';
 import { findElement } from 'ember-classy-page-object/extend';
@@ -26,23 +28,35 @@ const DoubleTogglePage = PageObject.extend({
 });
 
 
-moduleForAcceptance('Acceptance | simple');
+module('Acceptance | simple', async function(hooks) {
+  setupApplicationTest(hooks);
 
-test('visiting /', function(assert) {
-  const doubleToggle = new DoubleTogglePage();
+  test('visiting /', async function(assert) {
+    const doubleToggle = new DoubleTogglePage();
 
-  visit('/');
+    await visit('/');
 
-  andThen(() => {
     assert.equal(doubleToggle.firstToggle.isActive, false);
     assert.equal(doubleToggle.secondToggle.isActive, false);
-  });
 
-  doubleToggle.firstToggle.toggle()
-  doubleToggle.secondToggle.toggle()
+    await wait();
 
-  andThen(() => {
+    doubleToggle.firstToggle.toggle()
+    doubleToggle.secondToggle.toggle()
+
+    await wait();
+
     assert.equal(doubleToggle.firstToggle.isActive, true);
     assert.equal(doubleToggle.secondToggle.isActive, true);
+
+    await wait();
+
+    doubleToggle.firstToggle.toggle()
+    doubleToggle.secondToggle.toggle()
+
+    await wait();
+
+    assert.equal(doubleToggle.firstToggle.isActive, false);
+    assert.equal(doubleToggle.secondToggle.isActive, false);
   });
 });
