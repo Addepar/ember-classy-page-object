@@ -9,7 +9,9 @@ import { findElement } from 'ember-classy-page-object/extend';
 const ToggleButtonPage = PageObject.extend({
   toggle: clickable('[data-test-toggle-button]'),
 
-  activeClass: 'is-active',
+  get activeClass() {
+    return 'is-active';
+  },
 
   get isActive() {
     return findElement(this, '[data-test-toggle-button]').classList.contains(this.activeClass);
@@ -23,10 +25,12 @@ const DoubleTogglePage = PageObject.extend({
 
   secondToggle: ToggleButtonPage.extend({
     scope: '[data-test-second-toggle]',
-    activeClass: 'is-activated'
+
+    get activeClass() {
+      return 'is-activated';
+    },
   })
 });
-
 
 module('Acceptance | simple', async function(hooks) {
   setupApplicationTest(hooks);
