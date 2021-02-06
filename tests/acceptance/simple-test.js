@@ -28,7 +28,7 @@ const DoubleTogglePage = PageObject.extend({
 
     get activeClass() {
       return 'is-activated';
-    },
+    }
   })
 });
 
