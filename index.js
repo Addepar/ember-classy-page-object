@@ -2,7 +2,7 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-classy-page-object',
+  name: require('./package').name,
 
   treeForAddonTestSupport(tree) {
     // intentionally not calling _super here
