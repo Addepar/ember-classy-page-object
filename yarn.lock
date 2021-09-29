@@ -3685,7 +3685,7 @@ ember-source@~3.24.0:
     semver "^6.1.1"
     silent-error "^1.1.1"
 
-ember-test-selectors@^5.0.0:
+ember-test-selectors@5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/ember-test-selectors/-/ember-test-selectors-5.0.0.tgz#36c30f64498039cb88797cdda682275a460ee624"
   integrity sha512-hqAPqyJLEGBYcQ9phOKvHhSCyvcSbUL8Yj2si8OASsQWxwRqbxrtk5YlkN2aZiZdp9PAd2wErS8uClG0U7tNpA==
