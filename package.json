@@ -1,6 +1,6 @@
 {
   "name": "ember-classy-page-object",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
@@ -35,8 +35,8 @@
     "ember-cli-uglify": "^2.0.0",
     "ember-disable-prototype-extensions": "^1.1.2",
     "ember-export-application-global": "^2.0.0",
-    "ember-qunit": "^4.5.1",
     "ember-load-initializers": "^2.0.0",
+    "ember-qunit": "^4.5.1",
     "ember-resolver": "^5.1.1",
     "ember-source": "~3.24.0",
     "ember-source-channel-url": "^1.0.1",
