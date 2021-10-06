@@ -2,6 +2,8 @@
 
 Provides a super simple class-like wrapper around [ember-cli-page-object](https://github.com/san650/ember-cli-page-object).
 
+Supports Ember 2.8-LTS through Ember 3.28-LTS
+
 ## Usage
 
 Given a simple ToggleButton component that just toggles its active state with a
