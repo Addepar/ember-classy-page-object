@@ -1,4 +1,4 @@
-import { getter } from 'ember-cli-page-object/macros';
+import { getter } from 'ember-cli-page-object/test-support/macros';
 
 function isObject(obj) {
   return typeof obj === 'object' && obj !== null;

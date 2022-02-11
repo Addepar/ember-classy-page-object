@@ -2,12 +2,12 @@ export {
   buildSelector,
   fullScope,
   getContext
-} from 'ember-cli-page-object/extend';
+} from 'ember-cli-page-object/test-support/extend';
 
 import {
   findElement as originalFindElement,
   findElementWithAssert as originalFindElementWithAssert
-} from 'ember-cli-page-object/extend';
+} from 'ember-cli-page-object/test-support/extend';
 
 export function findElement(node, selector, options = {}) {
   const result = originalFindElement(node, selector, options);

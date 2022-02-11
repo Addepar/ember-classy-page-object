@@ -1,7 +1,7 @@
 import { assert } from '@ember/debug';
 
 import { create } from 'ember-cli-page-object';
-import { useNativeEvents } from 'ember-cli-page-object/extend';
+import { useNativeEvents } from 'ember-cli-page-object/test-support/extend';
 
 import { extractPageObjects, extractGetters, deepMergeDescriptors } from './utils/descriptors';
 

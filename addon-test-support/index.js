@@ -21,7 +21,7 @@ export {
 
 export {
   alias
-} from 'ember-cli-page-object/macros';
+} from 'ember-cli-page-object/test-support/macros';
 
 export { collection } from './-private/properties/collection';
 
