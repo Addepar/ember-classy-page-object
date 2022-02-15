@@ -4722,7 +4722,7 @@ ember-cli-babel@^7.11.0, ember-cli-babel@^7.12.0, ember-cli-babel@^7.13.0, ember
     rimraf "^3.0.1"
     semver "^5.5.0"
 
-ember-cli-babel@^7.24.0, ember-cli-babel@^7.26.0, ember-cli-babel@^7.26.6:
+ember-cli-babel@^7.24.0, ember-cli-babel@^7.26.6:
   version "7.26.11"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-7.26.11.tgz#50da0fe4dcd99aada499843940fec75076249a9f"
   integrity sha512-JJYeYjiz/JTn34q7F5DSOjkkZqy8qwFOOxXfE6pe9yEJqWGu4qErKxlz8I22JoVEQ/aBUO+OcKTpmctvykM9YA==
@@ -4851,7 +4851,7 @@ ember-cli-normalize-entity-name@^1.0.0:
   dependencies:
     silent-error "^1.0.0"
 
-ember-cli-page-object@v2.0.0-beta.3:
+ember-cli-page-object@~v2.0.0-beta.3:
   version "2.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/ember-cli-page-object/-/ember-cli-page-object-2.0.0-beta.3.tgz#49ecc2239f061d801ad208d6a933db1d3906c088"
   integrity sha512-swUbl4HnHEK3H6s+ivhEN+RBNgznIxHt3AHT4qQqSIQFrUdEck/s1/Z5lDl1rPOxuWvz5nnKt+W4GOu27muTMA==
