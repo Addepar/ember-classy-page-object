@@ -1,12 +1,8 @@
 import { assert } from '@ember/debug';
 
 import { create } from 'ember-cli-page-object';
-import { useNativeEvents } from 'ember-cli-page-object/extend';
 
 import { extractPageObjects, extractGetters, deepMergeDescriptors } from './utils/descriptors';
-
-// pre-emptively turn on native events since we'll need them
-useNativeEvents();
 
 function extendDefinition(definition, extension) {
   assert('must provide a string or an object to extend', extension !== null && (typeof extension === 'string' || typeof extension === 'object'));
