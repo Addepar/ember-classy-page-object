@@ -6,7 +6,7 @@ on:
 jobs:
   test:
     name: Run Tests
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -33,7 +33,7 @@ jobs:
 
   test-ember-try:
     name: Run Tests
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         ember-version:
