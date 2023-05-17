@@ -12,10 +12,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Use Node 16
+      - name: Use Node 14
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 14.x
 
       - name: Node Modules Cache
         uses: actions/cache@v2
@@ -52,10 +52,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Use Node 16
+      - name: Use Node 14
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 14.x
 
       - name: Node Modules Cache
         uses: actions/cache@v2
