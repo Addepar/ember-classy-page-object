@@ -6,16 +6,16 @@ on:
 jobs:
   test:
     name: Run Tests
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Use Node 12
-        uses: actions/setup-node@v2-beta
+      - name: Use Node 14
+        uses: actions/setup-node@v3
         with:
-          node-version: 12.x
+          node-version: 14.x
 
       - name: Node Modules Cache
         uses: actions/cache@v2
@@ -33,7 +33,7 @@ jobs:
 
   test-ember-try:
     name: Run Tests
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         ember-version:
@@ -52,10 +52,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Use Node 12
-        uses: actions/setup-node@v2-beta
+      - name: Use Node 14
+        uses: actions/setup-node@v3
         with:
-          node-version: 12.x
+          node-version: 14.x
 
       - name: Node Modules Cache
         uses: actions/cache@v2
