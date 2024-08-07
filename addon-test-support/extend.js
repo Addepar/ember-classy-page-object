@@ -1,7 +1,6 @@
 export {
   buildSelector,
-  fullScope,
-  getContext
+  fullScope
 } from 'ember-cli-page-object/extend';
 
 import {
