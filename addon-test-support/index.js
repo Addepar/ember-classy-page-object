@@ -7,7 +7,6 @@ export {
   count,
   fillable,
   hasClass,
-  is,
   isHidden,
   isPresent,
   isVisible,
@@ -16,13 +15,11 @@ export {
   text,
   triggerable,
   value,
-  visitable
-} from 'ember-cli-page-object';
+  visitable,
+} from "ember-cli-page-object";
 
-export {
-  alias
-} from 'ember-cli-page-object/macros';
+export { alias } from "ember-cli-page-object/macros";
 
-export { collection } from './-private/properties/collection';
+export { collection } from "./-private/properties/collection";
 
-export { default } from './-private/page-object';
+export { default } from "./-private/page-object";
