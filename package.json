@@ -38,7 +38,7 @@
     "ember-load-initializers": "^2.0.0",
     "ember-qunit": "^4.5.1",
     "ember-resolver": "^5.1.1",
-    "ember-source": "~3.24.0",
+    "ember-source": "~3.28.0",
     "ember-source-channel-url": "^1.0.1",
     "ember-test-selectors": "5.0.0",
     "ember-try": "^1.1.0",
@@ -46,13 +46,13 @@
     "webpack": "^5.68.0"
   },
   "engines": {
-    "node": ">= 10.*"
+    "node": ">= 18.*"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
   },
   "volta": {
-    "node": "12.22.6",
+    "node": "18.20.5",
     "yarn": "1.22.10"
   }
 }
