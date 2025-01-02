@@ -1,64 +1,57 @@
-import { module, test } from 'qunit';
-import { setupApplicationTest } from 'ember-qunit';
-import { visit } from '@ember/test-helpers';
-import wait from 'ember-test-helpers/wait';
+import { module, test } from "qunit";
+import { setupApplicationTest } from "ember-qunit";
+import { visit } from "@ember/test-helpers";
 
-import PageObject, { clickable } from 'ember-classy-page-object';
-import { findElement } from 'ember-classy-page-object/extend';
+import PageObject, { clickable } from "ember-classy-page-object";
+import { findElement } from "ember-classy-page-object/extend";
 
 const ToggleButtonPage = PageObject.extend({
-  toggle: clickable('[data-test-toggle-button]'),
+  toggle: clickable("[data-test-toggle-button]"),
 
   get activeClass() {
-    return 'is-active';
+    return "is-active";
   },
 
   get isActive() {
-    return findElement(this, '[data-test-toggle-button]').classList.contains(this.activeClass);
-  }
+    return findElement(this, "[data-test-toggle-button]").classList.contains(
+      this.activeClass
+    );
+  },
 });
 
 const DoubleTogglePage = PageObject.extend({
   firstToggle: ToggleButtonPage.extend({
-    scope: '[data-test-first-toggle]'
+    scope: "[data-test-first-toggle]",
   }),
 
   secondToggle: ToggleButtonPage.extend({
-    scope: '[data-test-second-toggle]',
+    scope: "[data-test-second-toggle]",
 
     get activeClass() {
-      return 'is-activated';
-    }
-  })
+      return "is-activated";
+    },
+  }),
 });
 
-module('Acceptance | simple', async function(hooks) {
+module("Acceptance | simple", async function (hooks) {
   setupApplicationTest(hooks);
 
-  test('visiting /', async function(assert) {
+  test("visiting /", async function (assert) {
     const doubleToggle = new DoubleTogglePage();
 
-    await visit('/');
+    await visit("/");
 
     assert.equal(doubleToggle.firstToggle.isActive, false);
     assert.equal(doubleToggle.secondToggle.isActive, false);
 
-    await wait();
-
-    doubleToggle.firstToggle.toggle()
-    doubleToggle.secondToggle.toggle()
-
-    await wait();
+    await doubleToggle.firstToggle.toggle();
+    await doubleToggle.secondToggle.toggle();
 
     assert.equal(doubleToggle.firstToggle.isActive, true);
     assert.equal(doubleToggle.secondToggle.isActive, true);
 
-    await wait();
-
-    doubleToggle.firstToggle.toggle()
-    doubleToggle.secondToggle.toggle()
-
-    await wait();
+    await doubleToggle.firstToggle.toggle();
+    await doubleToggle.secondToggle.toggle();
 
     assert.equal(doubleToggle.firstToggle.isActive, false);
     assert.equal(doubleToggle.secondToggle.isActive, false);

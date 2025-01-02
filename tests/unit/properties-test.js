@@ -1,6 +1,5 @@
 import PageObject, { collection } from 'ember-classy-page-object';
-
-import { module, test } from 'ember-qunit';
+import { module, test } from "qunit";
 
 module('properties tests');
 
