@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Use Node 18
         uses: actions/setup-node@v4
@@ -21,7 +21,7 @@ jobs:
           node-version: 18.x
 
       - name: Node Modules Cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: "**/node_modules"
           key: ci-yarn-${{ matrix.ember-version }}-${{ hashFiles('**/yarn.lock') }}
