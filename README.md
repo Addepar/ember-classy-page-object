@@ -11,7 +11,11 @@ template like so:
 
 ```hbs
 <!-- note activeClass defaults to `is-active` -->
-<button {{action "toggleActive"}} data-test-toggle-button class="{{if active activeClass}}">
+<button
+  {{action "toggleActive"}}
+  data-test-toggle-button
+  class="{{if active activeClass}}"
+>
   {{if active "Deactivate" "Activate"}}
 </button>
 ```
@@ -19,49 +23,51 @@ template like so:
 You can represent it and test like this:
 
 ```js
-import { module, test } from 'ember-qunit';
+import { module, test } from "ember-qunit";
 
-import PageObject, { clickable } from 'ember-classy-page-object';
-import { findElement } from 'ember-classy-page-object/extend';
+import PageObject, { clickable } from "ember-classy-page-object";
+import { findElement } from "ember-classy-page-object/extend";
 
 const ToggleButtonPage = PageObject.extend({
-  toggle: clickable('[data-test-toggle-button]'),
+  toggle: clickable("[data-test-toggle-button]"),
 
-  activeClass: 'is-active',
+  activeClass: "is-active",
 
   get isActive() {
-    return findElement(this, '[data-test-toggle-button]').classList.contains(this.activeClass);
-  }
+    return findElement(this, "[data-test-toggle-button]").classList.contains(
+      this.activeClass
+    );
+  },
 });
 
-module('toggle button');
+module("toggle button");
 
-test('can toggle', function(assert) {
-	const myToggleButton = new ToggleButtonPage();
+test("can toggle", function (assert) {
+  const myToggleButton = new ToggleButtonPage();
 
-	myToggleButton.toggle();
+  myToggleButton.toggle();
 
-	assert.ok(myToggleButton.isActive, 'it toggled!');
+  assert.ok(myToggleButton.isActive, "it toggled!");
 });
 ```
 
 If you later need to reuse a component, you can extend it to override properties:
 
 ```hbs
-{{toggle-button data-test-first-toggle=true}}
-{{toggle-button data-test-second-toggle=true activeClass="is-activated"}}
+<ToggleButton data-test-first-toggle />
+<ToggleButton data-test-second-toggle @activeClass="is-activated" />
 ```
 
 ```js
 const DoubleToggleButtonPage = PageObject.extend({
   firstToggle: ToggleButtonPage.extend({
-	  scope: '[data-test-first-toggle]'
+    scope: "[data-test-first-toggle]",
   }),
 
   secondToggle: ToggleButtonPage.extend({
-	  scope: '[data-test-second-toggle]',
-	  activeClass: 'is-activated'
-  })
+    scope: "[data-test-second-toggle]",
+    activeClass: "is-activated",
+  }),
 });
 
 const myDoubleToggle = new DoubleToggleButtonPage();
@@ -87,33 +93,33 @@ tying yourself to jquery in your tests, as Ember continues to remove the depende
 Classy page object re-exports all of the helpers from ember-cli-page-object with the exception of
 `getter`, you can now use native ES getters instead. The list of exports is as follows:
 
-* `ember-classy-page-object`
-  * `default as PageObject`
-  * `alias`
-  * `attribute`
-  * `blurrable`
-  * `clickOnText`
-  * `clickable`
-  * `contains`
-  * `count`
-  * `fillable`
-  * `hasClass`
-  * `is`
-  * `isHidden`
-  * `isPresent`
-  * `isVisible`
-  * `notHasClass`
-  * `property`
-  * `text`
-  * `triggerable`
-  * `value`
-  * `visitable`
-* `ember-classy-page-object/extend`
-  * `findElement`
-  * `findElementWithAssert`
-  * `buildSelector`
-  * `fullScope`
-  * `getContext`
+- `ember-classy-page-object`
+  - `default as PageObject`
+  - `alias`
+  - `attribute`
+  - `blurrable`
+  - `clickOnText`
+  - `clickable`
+  - `contains`
+  - `count`
+  - `fillable`
+  - `hasClass`
+  - `is`
+  - `isHidden`
+  - `isPresent`
+  - `isVisible`
+  - `notHasClass`
+  - `property`
+  - `text`
+  - `triggerable`
+  - `value`
+  - `visitable`
+- `ember-classy-page-object/extend`
+  - `findElement`
+  - `findElementWithAssert`
+  - `buildSelector`
+  - `fullScope`
+  - `getContext`
 
 Some helpers have been overridden to make them mergeable and easier to use, such as `collection`,
 so it's highly recommended that you use these helpers from `ember-classy-page-object` and not
@@ -134,29 +140,29 @@ collection simplifies the collection helper.
 
 let page = create({
   rows: collection({
-    scope: 'table',
+    scope: "table",
 
-    itemScope: 'tr',
+    itemScope: "tr",
 
     item: {
-      firstName: text('td.first-name'),
-      lastName: text('td.last-name')
-    }
-  })
+      firstName: text("td.first-name"),
+      lastName: text("td.last-name"),
+    },
+  }),
 });
 
 // after
 
 let Page = PageObject.extend({
   table: {
-    scope: 'table',
+    scope: "table",
 
     rows: collection({
-      scope: 'tr',
-      firstName: text('td.first-name'),
-      lastName: text('td.last-name')
-    })
-  }
+      scope: "tr",
+      firstName: text("td.first-name"),
+      lastName: text("td.last-name"),
+    }),
+  },
 });
 
 let page = new Page();
@@ -164,43 +170,43 @@ let page = new Page();
 
 Collections now return an instance of a class with the following public API methods:
 
-* `objectAt(index: number): Page`: Return the page for the item at the specified index
-* `forEach(fn: (item, index, list) => void): void`: Run a function for every item in the collection
-* `map(fn: (item, index, list) => any): Array<any>`: Map a transform over every item in the collection
-* `findAll(query: object | fn(item, index, list) => boolean): Array<Page>`: Find all items in the collection
+- `objectAt(index: number): Page`: Return the page for the item at the specified index
+- `forEach(fn: (item, index, list) => void): void`: Run a function for every item in the collection
+- `map(fn: (item, index, list) => any): Array<any>`: Map a transform over every item in the collection
+- `findAll(query: object | fn(item, index, list) => boolean): Array<Page>`: Find all items in the collection
   which match the query. If the query is an object, it will return all items whose properties
   are equal to every key/property on the query object. If it is a function it will return any
   item that returns true when passed to the function.
-* `findOne(query: object | fn(item, index, list) => boolean): Page | undefined`: Find the first item in the
+- `findOne(query: object | fn(item, index, list) => boolean): Page | undefined`: Find the first item in the
   collection that matches the query. If the query is an object, it will return all items whose properties
   are equal to every key/property on the query object. If it is a function it will return any
   item that returns true when passed to the function. If more than one item is matched, the helper will
   throw an error.
-* `toArray(): Array<Page>`: Convert the collection into a native array
+- `toArray(): Array<Page>`: Convert the collection into a native array
 
 And the following properties
 
-* `length: number`: The number of items in the collection (`count`)
+- `length: number`: The number of items in the collection (`count`)
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-classy-page-object`
-* `yarn install`
+- `git clone <repository-url>` this repository
+- `cd ember-classy-page-object`
+- `yarn install`
 
 ## Running
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+- `ember serve`
+- Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ## Running Tests
 
-* `yarn test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+- `yarn test` (Runs `ember try:each` to test your addon against multiple Ember versions)
+- `ember test`
+- `ember test --server`
 
 ## Building
 
-* `ember build`
+- `ember build`
 
 For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
