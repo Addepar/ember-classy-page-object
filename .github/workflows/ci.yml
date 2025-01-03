@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ember-version: [ember-lts-3.28, embroider-safe]
+        ember-version: [ember-lts-3.28, embroider-safe, embroider-optimized]
 
     steps:
       - name: Checkout
