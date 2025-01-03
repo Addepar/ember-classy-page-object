@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ember-version: [ember-lts-3.28]
+        ember-version: [ember-lts-3.28, ember-lts-4.4]
 
     steps:
       - name: Checkout
