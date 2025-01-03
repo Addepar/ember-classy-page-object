@@ -1,7 +1,6 @@
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import { visit } from '@ember/test-helpers';
-import wait from 'ember-test-helpers/wait';
 
 import PageObject, { clickable } from 'ember-classy-page-object';
 import { findElement } from 'ember-classy-page-object/extend';
@@ -43,22 +42,14 @@ module('Acceptance | simple', async function(hooks) {
     assert.equal(doubleToggle.firstToggle.isActive, false);
     assert.equal(doubleToggle.secondToggle.isActive, false);
 
-    await wait();
-
-    doubleToggle.firstToggle.toggle()
-    doubleToggle.secondToggle.toggle()
-
-    await wait();
+    await doubleToggle.firstToggle.toggle()
+    await doubleToggle.secondToggle.toggle()
 
     assert.equal(doubleToggle.firstToggle.isActive, true);
     assert.equal(doubleToggle.secondToggle.isActive, true);
 
-    await wait();
-
-    doubleToggle.firstToggle.toggle()
-    doubleToggle.secondToggle.toggle()
-
-    await wait();
+    await doubleToggle.firstToggle.toggle()
+    await doubleToggle.secondToggle.toggle()
 
     assert.equal(doubleToggle.firstToggle.isActive, false);
     assert.equal(doubleToggle.secondToggle.isActive, false);
