@@ -7,7 +7,6 @@ export {
   count,
   fillable,
   hasClass,
-  is,
   isHidden,
   isPresent,
   isVisible,
