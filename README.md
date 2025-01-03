@@ -11,15 +11,15 @@ template like so:
 
 ```hbs
 <!-- note activeClass defaults to `is-active` -->
-<button {{action "toggleActive"}} data-test-toggle-button class="{{if active activeClass}}">
-  {{if active "Deactivate" "Activate"}}
+<button {{action "toggleActive"}} data-test-toggle-button class="{{if this.active this.activeClass}}">
+  {{if this.active "Deactivate" "Activate"}}
 </button>
 ```
 
 You can represent it and test like this:
 
 ```js
-import { module, test } from 'ember-qunit';
+import { module, test } from 'qunit';
 
 import PageObject, { clickable } from 'ember-classy-page-object';
 import { findElement } from 'ember-classy-page-object/extend';
@@ -48,8 +48,8 @@ test('can toggle', function(assert) {
 If you later need to reuse a component, you can extend it to override properties:
 
 ```hbs
-{{toggle-button data-test-first-toggle=true}}
-{{toggle-button data-test-second-toggle=true activeClass="is-activated"}}
+<ToggleButton data-test-first-toggle />
+<ToggleButton data-test-second-toggle @activeClass="is-activated" />
 ```
 
 ```js
