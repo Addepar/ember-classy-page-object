@@ -36,7 +36,6 @@
     "ember-cli-sri": "^2.1.1",
     "ember-cli-uglify": "^3.0.0",
     "ember-disable-prototype-extensions": "^1.1.3",
-    "ember-export-application-global": "^2.0.1",
     "ember-load-initializers": "^3.0.1",
     "ember-qunit": "^6.2.0",
     "ember-resolver": "^13.1.0",
