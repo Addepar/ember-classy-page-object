@@ -49,7 +49,7 @@ jobs:
           key: ci-yarn-${{ matrix.ember-version }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install
-        run: yarn install --frozen-lockfile --ignore-engines
+        run: yarn install --frozen-lockfile
 
       - name: Run Tests
         run: node_modules/.bin/ember try:one ${{ matrix.ember-version }} --skip-cleanup
