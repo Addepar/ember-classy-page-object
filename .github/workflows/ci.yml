@@ -40,10 +40,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - uses: volta-cli/action@v4
       - name: Node Modules Cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: '**/node_modules'
           key: ci-yarn-${{ matrix.ember-version }}-${{ hashFiles('**/yarn.lock') }}
