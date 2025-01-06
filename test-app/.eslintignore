@@ -1,3 +1,4 @@
 targets.js
 dist/
 testem.js
+config/ember-try.js
