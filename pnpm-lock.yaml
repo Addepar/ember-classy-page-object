@@ -60,8 +60,8 @@ importers:
         specifier: ^2.10.0
         version: 2.10.0(webpack@5.97.1)
       ember-classy-page-object:
-        specifier: 0.8.0-beta.2
-        version: 0.8.0-beta.2(@ember/test-helpers@2.9.4(@babel/core@7.26.0)(ember-source@3.28.12(@babel/core@7.26.0)))(webpack@5.97.1)
+        specifier: workspace:0.8.0-beta.2
+        version: link:../addon
       ember-cli:
         specifier: ~3.28.6
         version: 3.28.6(handlebars@4.7.8)(underscore@1.13.7)
@@ -2299,10 +2299,6 @@ packages:
   ember-auto-import@2.10.0:
     resolution: {integrity: sha512-bcBFDYVTFHyqyq8BNvsj6UO3pE6Uqou/cNmee0WaqBgZ+1nQqFz0UE26usrtnFAT+YaFZSkqF2H36QW84k0/cg==}
     engines: {node: 12.* || 14.* || >= 16}
-
-  ember-classy-page-object@0.8.0-beta.2:
-    resolution: {integrity: sha512-rnGP5/7Gid+ShgTcLB0SR16IlxtTtdZq/pvtAZGwWvEWF8dJOl33vH1/Zc3052mHs9oN2gbZ8mOoBPYbF8ZA2g==}
-    engines: {node: '>= 10.*'}
 
   ember-cli-babel-plugin-helpers@1.1.1:
     resolution: {integrity: sha512-sKvOiPNHr5F/60NLd7SFzMpYPte/nnGkq/tMIfXejfKHIhaiIkYFqX8Z9UFTKWLLn+V7NOaby6niNPZUdvKCRw==}
@@ -8035,19 +8031,6 @@ snapshots:
       typescript-memoize: 1.1.1
       walk-sync: 3.0.0
     transitivePeerDependencies:
-      - '@glint/template'
-      - supports-color
-      - webpack
-
-  ember-classy-page-object@0.8.0-beta.2(@ember/test-helpers@2.9.4(@babel/core@7.26.0)(ember-source@3.28.12(@babel/core@7.26.0)))(webpack@5.97.1):
-    dependencies:
-      broccoli-funnel: 2.0.2
-      ember-auto-import: 2.10.0(webpack@5.97.1)
-      ember-cli-babel: 7.26.11
-      ember-cli-page-object: 2.0.0(@ember/test-helpers@2.9.4(@babel/core@7.26.0)(ember-source@3.28.12(@babel/core@7.26.0)))
-    transitivePeerDependencies:
-      - '@ember/jquery'
-      - '@ember/test-helpers'
       - '@glint/template'
       - supports-color
       - webpack
