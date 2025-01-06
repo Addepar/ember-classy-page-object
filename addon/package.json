@@ -13,21 +13,43 @@
   },
   "repository": "https://github.com/Addepar/ember-classy-page-object",
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "rollup --config",
+    "prepublishOnly": "rollup --config",
+    "start": "rollup --config --watch"
   },
   "dependencies": {
-    "broccoli-funnel": "^3.0.8",
-    "ember-auto-import": "^2.10.0",
-    "ember-cli-babel": "^7.12.0",
+    "@embroider/addon-shim": "^1.9.0",
     "ember-cli-page-object": "~v2.0.0-beta.3"
   },
   "devDependencies": {
-    "eslint": "^8.0.1"
+    "@babel/core": "^7.26.0",
+    "@babel/plugin-proposal-decorators": "^7.25.9",
+    "@babel/plugin-transform-class-properties": "^7.25.9",
+    "@embroider/addon-dev": "^7.1.1",
+    "@rollup/plugin-babel": "^6.0.4",
+    "eslint": "^8.0.1",
+    "rollup": "^4.30.0"
   },
   "ember": {
     "edition": "octane"
   },
   "volta": {
     "extends": "../package.json"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": "./dist/*",
+    "./addon-main.js": "./addon-main.js"
+  },
+  "files": [
+    "addon-main.js",
+    "dist"
+  ],
+  "ember-addon": {
+    "main": "addon-main.js",
+    "type": "addon",
+    "version": 2,
+    "app-js": {}
   }
 }
