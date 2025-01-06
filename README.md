@@ -2,7 +2,8 @@
 
 Provides a super simple class-like wrapper around [ember-cli-page-object](https://github.com/san650/ember-cli-page-object).
 
-Supports Ember 2.8-LTS through Ember 3.28-LTS
+Supports Ember 3.28 LTS and also Ember 4 and 5 LTS versions.
+This addon is embroider-safe.
 
 ## Usage
 
@@ -20,7 +21,6 @@ You can represent it and test like this:
 
 ```js
 import { module, test } from 'qunit';
-
 import PageObject, { clickable } from 'ember-classy-page-object';
 import { findElement } from 'ember-classy-page-object/extend';
 
@@ -98,7 +98,6 @@ Classy page object re-exports all of the helpers from ember-cli-page-object with
   * `count`
   * `fillable`
   * `hasClass`
-  * `is`
   * `isHidden`
   * `isPresent`
   * `isVisible`
@@ -113,7 +112,6 @@ Classy page object re-exports all of the helpers from ember-cli-page-object with
   * `findElementWithAssert`
   * `buildSelector`
   * `fullScope`
-  * `getContext`
 
 Some helpers have been overridden to make them mergeable and easier to use, such as `collection`,
 so it's highly recommended that you use these helpers from `ember-classy-page-object` and not
