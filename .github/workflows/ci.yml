@@ -17,20 +17,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: volta-cli/action@v4
-      - name: Node Modules Cache
-        uses: actions/cache@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
         with:
-          path: '**/node_modules'
-          key: ci-yarn-${{ hashFiles('**/yarn.lock') }}
-      - name: Install
-        run: yarn install --frozen-lockfile
+          node-version: '18'
+          cache: 'pnpm'
+      - run: pnpm install
       - name: Lint Addon
         working-directory: addon
-        run: yarn run lint
+        run: pnpm run lint
       - name: Lint Test App
         working-directory: test-app
-        run: yarn run lint
+        run: pnpm run lint
 
   test-ember-try:
     name: Run Tests
@@ -52,18 +50,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: volta-cli/action@v4
-      - name: Node Modules Cache
-        uses: actions/cache@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
         with:
-          path: '**/node_modules'
-          key: ci-yarn-${{ hashFiles('**/yarn.lock') }}-${{ matrix.ember-version }}
-          restore-keys: |
-            ci-yarn-${{ hashFiles('**/yarn.lock') }}-
-
-      - name: Install
-        run: yarn install --frozen-lockfile
-
+          node-version: '18'
+          cache: 'pnpm'
+      - run: pnpm install
       - name: Run Tests
         working-directory: test-app
-        run: yarn run ember try:one ${{ matrix.ember-version }} --skip-cleanup
+        run: ./node_modules/.bin/ember try:one ${{ matrix.ember-version }} --skip-cleanup

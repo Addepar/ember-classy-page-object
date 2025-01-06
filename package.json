@@ -1,8 +1,10 @@
 {
   "private": true,
-  "workspaces": ["addon", "test-app"],
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  },
   "volta": {
-    "node": "18.20.5",
-    "yarn": "1.22.10"
-  }
+    "node": "18.20.5"
+  },
+  "packageManager": "pnpm@9.15.3"
 }

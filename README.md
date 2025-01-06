@@ -186,7 +186,7 @@ And the following properties
 
 * `git clone <repository-url>` this repository
 * `cd ember-classy-page-object`
-* `yarn install`
+* `pnpm install`
 
 ## Running
 
@@ -195,7 +195,7 @@ And the following properties
 
 ## Running Tests
 
-* `yarn test` (Runs `ember try:each` to test your addon against multiple Ember versions)
+* `pnpm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
 
