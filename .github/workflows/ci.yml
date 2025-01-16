@@ -17,17 +17,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ember-version: [
-          embroider-safe,
-          embroider-optimized,
-          ember-lts-3.28,
-          ember-lts-4.4,
-          ember-lts-4.8,
-          ember-lts-4.12,
-          ember-lts-5.4,
-          ember-lts-5.8,
-          ember-lts-5.12
-        ]
+        ember-version:
+          [
+            embroider-safe,
+            embroider-optimized,
+            ember-lts-3.28,
+            ember-lts-4.4,
+            ember-lts-4.8,
+            ember-lts-4.12,
+            ember-lts-5.4,
+            ember-lts-5.8,
+            ember-lts-5.12,
+          ]
 
     steps:
       - name: Checkout
@@ -36,7 +37,7 @@ jobs:
       - name: Node Modules Cache
         uses: actions/cache@v4
         with:
-          path: '**/node_modules'
+          path: "**/node_modules"
           key: ci-yarn-${{ hashFiles('**/yarn.lock') }}-${{ matrix.ember-version }}
           restore-keys: |
             ci-yarn-${{ hashFiles('**/yarn.lock') }}-
@@ -46,3 +47,10 @@ jobs:
 
       - name: Run Tests
         run: node_modules/.bin/ember try:one ${{ matrix.ember-version }} --skip-cleanup
+
+  tests-all:
+    runs-on: ubuntu-latest
+    needs: test-ember-try
+    if: failure() || cancelled()
+    steps:
+      - run: exit 1
