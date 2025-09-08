@@ -19,7 +19,7 @@ importers:
         version: 8.2.0(@babel/core@7.26.9)
       ember-cli-page-object:
         specifier: ^2.3.1
-        version: 2.3.1(@ember/test-helpers@2.9.6(@babel/core@7.26.9)(ember-source@3.28.12(@babel/core@7.26.9)))
+        version: 2.3.2(@ember/test-helpers@2.9.6(@babel/core@7.26.9)(ember-source@3.28.12(@babel/core@7.26.9)))
     devDependencies:
       '@ember/optional-features':
         specifier: ^2.2.0
@@ -738,8 +738,8 @@ packages:
     resolution: {integrity: sha512-bb9h95ktG2wKY9+ja1sdsFBdOms2lB19VWs8wmNpzgHv1NCetonBoV5jHBV4DHt0uS1tg9z66cZqhUVlYs96KQ==}
     engines: {node: 10.* || 12.* || >= 14.*}
 
-  '@embroider/addon-shim@1.9.0':
-    resolution: {integrity: sha512-fMzayl/licUL8VRAy4qXROKcYvHwUbV8aTh4m97L5/MRuVpxbcAy92DGGTqx5OBKCSQN3gMg+sUKeE6AviefpQ==}
+  '@embroider/addon-shim@1.10.0':
+    resolution: {integrity: sha512-gcJuHiXgnrzaU8NyU+2bMbtS6PNOr5v5B8OXBqaBvTCsMpXLvKo8OBOQFCoUN0rPX2J6VaFqrbi/371sMvzZug==}
     engines: {node: 12.* || 14.* || >= 16}
 
   '@embroider/macros@1.16.11':
@@ -762,6 +762,10 @@ packages:
 
   '@embroider/shared-internals@2.9.0':
     resolution: {integrity: sha512-8untWEvGy6av/oYibqZWMz/yB+LHsKxEOoUZiLvcpFwWj2Sipc0DcXeTJQZQZ++otNkLCWyDrDhOLrOkgjOPSg==}
+    engines: {node: 12.* || 14.* || >= 16}
+
+  '@embroider/shared-internals@3.0.0':
+    resolution: {integrity: sha512-5J5ipUMCAinQS38WW7wedruq5Z4VnHvNo+ZgOduw0PtI9w0CQWx7/HE+98PBDW8jclikeF+aHwF317vc1hwuzg==}
     engines: {node: 12.* || 14.* || >= 16}
 
   '@embroider/test-setup@4.0.0':
@@ -908,8 +912,8 @@ packages:
   '@types/http-errors@2.0.4':
     resolution: {integrity: sha512-D0CFMMtydbJAegzOyHjtiKPLlvnm3iTZyZRSZoLq2mRhDdmLfIWOCYPfQJ4cu2erKghU++QvjcUjp/5h7hESpA==}
 
-  '@types/jquery@3.5.32':
-    resolution: {integrity: sha512-b9Xbf4CkMqS02YH8zACqN1xzdxc3cO735Qe5AbSUFmyOiaWAbcpqh9Wna+Uk0vgACvoQHpWDg2rGdHkYPLmCiQ==}
+  '@types/jquery@3.5.33':
+    resolution: {integrity: sha512-SeyVJXlCZpEki5F0ghuYe+L+PprQta6nRZqhONt9F13dWBtR/ftoaIbdRQ7cis7womE+X2LKhsDdDtkkDhJS6g==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -947,8 +951,8 @@ packages:
   '@types/serve-static@1.15.7':
     resolution: {integrity: sha512-W8Ym+h8nhuRwaKPaDw34QUkwsGi6Rc4yYqvKFo5rm2FUEhCFbzVWrxXUxuKK8TASjWsysJY0nsmNCGhCOIsrOw==}
 
-  '@types/sizzle@2.3.9':
-    resolution: {integrity: sha512-xzLEyKB50yqCUPUJkIsrVvoWNfFUbIZI+RspLWt8u+tIW/BetMBZtgV2LY/2o+tYH8dRvQ+eoPf3NdhQCcLE2w==}
+  '@types/sizzle@2.3.10':
+    resolution: {integrity: sha512-TC0dmN0K8YcWEAEfiPi5gJP14eJe30TTGjkvek3iM/1NdHHsdCA/Td6GvNndMOo/iSnIsZ4HuuhrYPDAmbxzww==}
 
   '@types/symlink-or-copy@1.2.2':
     resolution: {integrity: sha512-MQ1AnmTLOncwEf9IVU+B2e4Hchrku5N67NkgcAHW0p3sdzPe0FNMANxEm6OJUzPniEQGkeT3OROLlCwZJLWFZA==}
@@ -1230,6 +1234,10 @@ packages:
 
   babel-import-util@3.0.0:
     resolution: {integrity: sha512-4YNPkuVsxAW5lnSTa6cn4Wk49RX6GAB6vX+M6LqEtN0YePqoFczv1/x0EyLK/o+4E1j9jEuYj5Su7IEPab5JHQ==}
+    engines: {node: '>= 12.*'}
+
+  babel-import-util@3.0.1:
+    resolution: {integrity: sha512-2copPaWQFUrzooJVIVZA/Oppx/S/KOoZ4Uhr+XWEQDMZ8Rvq/0SNQpbdIyMBJ8IELWt10dewuJw+tX4XjOo7Rg==}
     engines: {node: '>= 12.*'}
 
   babel-loader@8.4.1:
@@ -2058,6 +2066,15 @@ packages:
       supports-color:
         optional: true
 
+  debug@4.4.1:
+    resolution: {integrity: sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+
   decode-uri-component@0.2.2:
     resolution: {integrity: sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==}
     engines: {node: '>=0.10'}
@@ -2213,8 +2230,8 @@ packages:
   ember-cli-normalize-entity-name@1.0.0:
     resolution: {integrity: sha512-rF4P1rW2P1gVX1ynZYPmuIf7TnAFDiJmIUFI1Xz16VYykUAyiOCme0Y22LeZq8rTzwBMiwBwoE3RO4GYWehXZA==}
 
-  ember-cli-page-object@2.3.1:
-    resolution: {integrity: sha512-QHxGVpGcPwdYRxTLKbnI9I39KjR9CRfHxngogqqMpRaSx19Qq2YhHLc5JKaJIIyMU5NXVqPmVFRtFGDj0AU5fQ==}
+  ember-cli-page-object@2.3.2:
+    resolution: {integrity: sha512-4RfcDMq7mRKs1ZlTQ4wKHeA6u39XuxhzeRqbC0XWRZgFfBnUjlwlIvuyuNzUEnKR9l+uvWVDioGerLIZLLz78w==}
     engines: {node: 12.* || 14.* || >= 16}
     peerDependencies:
       '@ember/jquery': '*'
@@ -4333,6 +4350,10 @@ packages:
     resolution: {integrity: sha512-ZuF55hVUQaaczgOIwqWzkEcEidmlD/xl44x1UZnhOXcYuFN2S6+rcxpG+C1N3So0wvNI3DmJICUFfu2SxhBmvg==}
     deprecated: https://github.com/lydell/resolve-url#deprecated
 
+  resolve.exports@2.0.3:
+    resolution: {integrity: sha512-OcXjMsGdhL4XnbShKpAcSqPMzQoYkYyhbEaeSko47MjRP9NfEQMhZkXL1DoFlt9LWQn4YttrdnV6X2OiyzBi+A==}
+    engines: {node: '>=10'}
+
   resolve@1.22.10:
     resolution: {integrity: sha512-NPRy+/ncIMeDlTAsuqwKIiferiawhefFJtkNSW0qZJEqMEb+qBt/77B/jGeeek+F0uOeN05CDa6HXbbIgtVX4w==}
     engines: {node: '>= 0.4'}
@@ -4461,6 +4482,11 @@ packages:
 
   semver@7.7.1:
     resolution: {integrity: sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==}
+    engines: {node: '>=10'}
+    hasBin: true
+
+  semver@7.7.2:
+    resolution: {integrity: sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -5366,7 +5392,7 @@ snapshots:
       '@babel/core': 7.26.10
       '@babel/helper-compilation-targets': 7.27.0
       '@babel/helper-plugin-utils': 7.26.5
-      debug: 4.4.0
+      debug: 4.4.1
       lodash.debounce: 4.0.8
       resolve: 1.22.10
     transitivePeerDependencies:
@@ -6660,12 +6686,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/addon-shim@1.9.0':
+  '@embroider/addon-shim@1.10.0':
     dependencies:
-      '@embroider/shared-internals': 2.9.0
+      '@embroider/shared-internals': 3.0.0
       broccoli-funnel: 3.0.8
       common-ancestor-path: 1.0.1
-      semver: 7.7.1
+      semver: 7.7.2
     transitivePeerDependencies:
       - supports-color
 
@@ -6708,6 +6734,24 @@ snapshots:
       pkg-entry-points: 1.1.1
       resolve-package-path: 4.0.3
       semver: 7.7.1
+      typescript-memoize: 1.1.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@embroider/shared-internals@3.0.0':
+    dependencies:
+      babel-import-util: 3.0.1
+      debug: 4.4.1
+      ember-rfc176-data: 0.3.18
+      fs-extra: 9.1.0
+      is-subdir: 1.2.0
+      js-string-escape: 1.0.1
+      lodash: 4.17.21
+      minimatch: 3.1.2
+      pkg-entry-points: 1.1.1
+      resolve-package-path: 4.0.3
+      resolve.exports: 2.0.3
+      semver: 7.7.2
       typescript-memoize: 1.1.1
     transitivePeerDependencies:
       - supports-color
@@ -6869,9 +6913,9 @@ snapshots:
 
   '@types/http-errors@2.0.4': {}
 
-  '@types/jquery@3.5.32':
+  '@types/jquery@3.5.33':
     dependencies:
-      '@types/sizzle': 2.3.9
+      '@types/sizzle': 2.3.10
 
   '@types/json-schema@7.0.15': {}
 
@@ -6913,7 +6957,7 @@ snapshots:
       '@types/node': 24.3.0
       '@types/send': 0.17.4
 
-  '@types/sizzle@2.3.9': {}
+  '@types/sizzle@2.3.10': {}
 
   '@types/symlink-or-copy@1.2.2': {}
 
@@ -7202,6 +7246,8 @@ snapshots:
   babel-import-util@2.1.1: {}
 
   babel-import-util@3.0.0: {}
+
+  babel-import-util@3.0.1: {}
 
   babel-loader@8.4.1(@babel/core@7.26.9)(webpack@5.101.3):
     dependencies:
@@ -8255,6 +8301,10 @@ snapshots:
     dependencies:
       ms: 2.1.3
 
+  debug@4.4.1:
+    dependencies:
+      ms: 2.1.3
+
   decode-uri-component@0.2.2: {}
 
   decompress-response@3.3.0:
@@ -8510,12 +8560,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-cli-page-object@2.3.1(@ember/test-helpers@2.9.6(@babel/core@7.26.9)(ember-source@3.28.12(@babel/core@7.26.9))):
+  ember-cli-page-object@2.3.2(@ember/test-helpers@2.9.6(@babel/core@7.26.9)(ember-source@3.28.12(@babel/core@7.26.9))):
     dependencies:
       '@ember/test-helpers': 2.9.6(@babel/core@7.26.9)(ember-source@3.28.12(@babel/core@7.26.9))
-      '@embroider/addon-shim': 1.9.0
+      '@embroider/addon-shim': 1.10.0
       '@ro0gr/ceibo': 2.2.0
-      '@types/jquery': 3.5.32
+      '@types/jquery': 3.5.33
       jquery: 3.7.1
     transitivePeerDependencies:
       - supports-color
@@ -11144,6 +11194,8 @@ snapshots:
 
   resolve-url@0.2.1: {}
 
+  resolve.exports@2.0.3: {}
+
   resolve@1.22.10:
     dependencies:
       is-core-module: 2.16.1
@@ -11283,6 +11335,8 @@ snapshots:
   semver@6.3.1: {}
 
   semver@7.7.1: {}
+
+  semver@7.7.2: {}
 
   send@0.19.0:
     dependencies:
