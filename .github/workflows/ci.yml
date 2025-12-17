@@ -47,7 +47,7 @@ jobs:
         id: pnpm-cache
         run: echo "store-dir=$(pnpm store path)" >> "$GITHUB_OUTPUT"
       - name: Node Modules Cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${{ steps.pnpm-cache.outputs.store-dir }}
           key: ci-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ matrix.ember-version }}
