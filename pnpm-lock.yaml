@@ -62,7 +62,7 @@ importers:
         version: 3.0.1(ember-source@3.28.12(@babel/core@7.28.4))
       ember-qunit:
         specifier: ^6.2.0
-        version: 6.2.0(@ember/test-helpers@2.9.6(@babel/core@7.28.4)(ember-source@3.28.12(@babel/core@7.28.4)))(ember-source@3.28.12(@babel/core@7.28.4))(qunit@2.24.1)(webpack@5.104.1)
+        version: 6.2.0(@ember/test-helpers@2.9.6(@babel/core@7.28.4)(ember-source@3.28.12(@babel/core@7.28.4)))(ember-source@3.28.12(@babel/core@7.28.4))(qunit@2.25.0)(webpack@5.104.1)
       ember-resolver:
         specifier: ^13.1.0
         version: 13.1.1
@@ -83,7 +83,7 @@ importers:
         version: 4.7.0
       qunit:
         specifier: ^2.23.1
-        version: 2.24.1
+        version: 2.25.0
       webpack:
         specifier: ^5.97.1
         version: 5.104.1
@@ -4757,8 +4757,8 @@ packages:
   quick-temp@0.1.8:
     resolution: {integrity: sha512-YsmIFfD9j2zaFwJkzI6eMG7y0lQP7YeWzgtFgNl38pGWZBSXJooZbOWwkcRot7Vt0Fg9L23pX0tqWU3VvLDsiA==}
 
-  qunit@2.24.1:
-    resolution: {integrity: sha512-Eu0k/5JDjx0QnqxsE1WavnDNDgL1zgMZKsMw/AoAxnsl9p4RgyLODyo2N7abZY7CEAnvl5YUqFZdkImzbgXzSg==}
+  qunit@2.25.0:
+    resolution: {integrity: sha512-MONPKgjavgTqArCwZOEz8nEMbA19zNXIp5ZOW9rPYj5cbgQp0fiI36c9dPTSzTRRzx+KcfB5eggYB/ENqxi0+w==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -10225,7 +10225,7 @@ snapshots:
     dependencies:
       ember-source: 3.28.12(@babel/core@7.28.4)
 
-  ember-qunit@6.2.0(@ember/test-helpers@2.9.6(@babel/core@7.28.4)(ember-source@3.28.12(@babel/core@7.28.4)))(ember-source@3.28.12(@babel/core@7.28.4))(qunit@2.24.1)(webpack@5.104.1):
+  ember-qunit@6.2.0(@ember/test-helpers@2.9.6(@babel/core@7.28.4)(ember-source@3.28.12(@babel/core@7.28.4)))(ember-source@3.28.12(@babel/core@7.28.4))(qunit@2.25.0)(webpack@5.104.1):
     dependencies:
       '@ember/test-helpers': 2.9.6(@babel/core@7.28.4)(ember-source@3.28.12(@babel/core@7.28.4))
       broccoli-funnel: 3.0.8
@@ -10235,7 +10235,7 @@ snapshots:
       ember-cli-babel: 7.26.11
       ember-cli-test-loader: 3.1.0
       ember-source: 3.28.12(@babel/core@7.28.4)
-      qunit: 2.24.1
+      qunit: 2.25.0
       resolve-package-path: 4.0.3
       silent-error: 1.1.1
       validate-peer-dependencies: 2.2.0
@@ -12455,7 +12455,7 @@ snapshots:
       rimraf: 2.7.1
       underscore.string: 3.3.6
 
-  qunit@2.24.1:
+  qunit@2.25.0:
     dependencies:
       commander: 7.2.0
       node-watch: 0.7.3
