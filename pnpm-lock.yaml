@@ -13,7 +13,7 @@ importers:
         version: 3.0.8
       ember-auto-import:
         specifier: ^2.10.0
-        version: 2.10.1(webpack@5.104.1)
+        version: 2.10.1(webpack@5.105.1)
       ember-cli-babel:
         specifier: ^8.2.0
         version: 8.2.0(@babel/core@7.28.4)
@@ -62,7 +62,7 @@ importers:
         version: 3.0.1(ember-source@3.28.12(@babel/core@7.28.4))
       ember-qunit:
         specifier: ^6.2.0
-        version: 6.2.0(@ember/test-helpers@2.9.6(@babel/core@7.28.4)(ember-source@3.28.12(@babel/core@7.28.4)))(ember-source@3.28.12(@babel/core@7.28.4))(qunit@2.25.0)(webpack@5.104.1)
+        version: 6.2.0(@ember/test-helpers@2.9.6(@babel/core@7.28.4)(ember-source@3.28.12(@babel/core@7.28.4)))(ember-source@3.28.12(@babel/core@7.28.4))(qunit@2.25.0)(webpack@5.105.1)
       ember-resolver:
         specifier: ^13.1.0
         version: 13.1.1
@@ -86,7 +86,7 @@ importers:
         version: 2.25.0
       webpack:
         specifier: ^5.97.1
-        version: 5.104.1
+        version: 5.105.1
 
 packages:
 
@@ -1443,8 +1443,8 @@ packages:
     resolution: {integrity: sha512-zmPitbQ8+6zNutpwgcQuLcsEpn/Cj54Kbn7L5pX0Os5kdWplB7xPgEh/g+SWOB/qmows2gpuCaPyduq8ZZRnxA==}
     deprecated: This is a stub types definition. minimatch provides its own type definitions, so you do not need this installed.
 
-  '@types/node@25.2.1':
-    resolution: {integrity: sha512-CPrnr8voK8vC6eEtyRzvMpgp3VyVRhgclonE7qYi6P9sXwYb59ucfrnmFBTaP0yUi8Gk4yZg/LlTJULGxvTNsg==}
+  '@types/node@25.2.3':
+    resolution: {integrity: sha512-m0jEgYlYz+mDJZ2+F4v8D1AyQb+QzsNqRuI7xg1VQX/KlKS0qT9r1Mo16yo5F/MtifXFgaofIFsdFMox2SxIbQ==}
 
   '@types/qs@6.9.18':
     resolution: {integrity: sha512-kK7dgTYDyGqS+e2Q4aK9X3D7q234CIZ1Bv0q/7Z5IwRDoADNU81xXJK/YVyLbLTZCoIwUoDoffFeF+p/eIklAA==}
@@ -5690,8 +5690,8 @@ packages:
     resolution: {integrity: sha512-yd1RBzSGanHkitROoPFd6qsrxt+oFhg/129YzheDGqeustzX0vTZJZsSsQjVQC4yzBQ56K55XU8gaNCtIzOnTg==}
     engines: {node: '>=10.13.0'}
 
-  webpack@5.104.1:
-    resolution: {integrity: sha512-Qphch25abbMNtekmEGJmeRUhLDbe+QfiWTiqpKYkpCOWY64v9eyl+KRRLmqOFA2AvKPpc9DC6+u2n76tQLBoaA==}
+  webpack@5.105.1:
+    resolution: {integrity: sha512-Gdj3X74CLJJ8zy4URmK42W7wTZUJrqL+z8nyGEr4dTN0kb3nVs+ZvjbTOqRYPD7qX4tUmwyHL9Q9K6T1seW6Yw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -8226,7 +8226,7 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 25.2.1
+      '@types/node': 25.2.3
 
   '@types/chai-as-promised@7.1.8':
     dependencies:
@@ -8236,11 +8236,11 @@ snapshots:
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 25.2.1
+      '@types/node': 25.2.3
 
   '@types/cors@2.8.17':
     dependencies:
-      '@types/node': 25.2.1
+      '@types/node': 25.2.3
 
   '@types/eslint-scope@3.7.7':
     dependencies:
@@ -8256,7 +8256,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.6':
     dependencies:
-      '@types/node': 25.2.1
+      '@types/node': 25.2.3
       '@types/qs': 6.9.18
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -8270,21 +8270,21 @@ snapshots:
 
   '@types/fs-extra@5.1.0':
     dependencies:
-      '@types/node': 25.2.1
+      '@types/node': 25.2.3
 
   '@types/fs-extra@8.1.5':
     dependencies:
-      '@types/node': 25.2.1
+      '@types/node': 25.2.3
 
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 6.0.0
-      '@types/node': 25.2.1
+      '@types/node': 25.2.3
 
   '@types/glob@8.1.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 25.2.1
+      '@types/node': 25.2.3
 
   '@types/http-errors@2.0.4': {}
 
@@ -8296,7 +8296,7 @@ snapshots:
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 25.2.1
+      '@types/node': 25.2.3
 
   '@types/mime@1.3.5': {}
 
@@ -8308,7 +8308,7 @@ snapshots:
     dependencies:
       minimatch: 7.4.6
 
-  '@types/node@25.2.1':
+  '@types/node@25.2.3':
     dependencies:
       undici-types: 7.16.0
 
@@ -8318,22 +8318,22 @@ snapshots:
 
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 25.2.1
+      '@types/node': 25.2.3
 
   '@types/rimraf@2.0.5':
     dependencies:
       '@types/glob': 8.1.0
-      '@types/node': 25.2.1
+      '@types/node': 25.2.3
 
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 25.2.1
+      '@types/node': 25.2.3
 
   '@types/serve-static@1.15.7':
     dependencies:
       '@types/http-errors': 2.0.4
-      '@types/node': 25.2.1
+      '@types/node': 25.2.3
       '@types/send': 0.17.4
 
   '@types/sizzle@2.3.10': {}
@@ -8628,14 +8628,14 @@ snapshots:
 
   babel-import-util@3.0.1: {}
 
-  babel-loader@8.4.1(@babel/core@7.28.4)(webpack@5.104.1):
+  babel-loader@8.4.1(@babel/core@7.28.4)(webpack@5.105.1):
     dependencies:
       '@babel/core': 7.28.4
       find-cache-dir: 3.3.2
       loader-utils: 2.0.4
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 5.104.1
+      webpack: 5.105.1
 
   babel-plugin-debug-macros@0.2.0(@babel/core@7.28.4):
     dependencies:
@@ -9673,7 +9673,7 @@ snapshots:
 
   crypto-random-string@2.0.0: {}
 
-  css-loader@5.2.7(webpack@5.104.1):
+  css-loader@5.2.7(webpack@5.105.1):
     dependencies:
       icss-utils: 5.1.0(postcss@8.5.6)
       loader-utils: 2.0.4
@@ -9685,7 +9685,7 @@ snapshots:
       postcss-value-parser: 4.2.0
       schema-utils: 3.3.0
       semver: 7.7.2
-      webpack: 5.104.1
+      webpack: 5.105.1
 
   cssesc@3.0.0: {}
 
@@ -9817,7 +9817,7 @@ snapshots:
 
   electron-to-chromium@1.5.286: {}
 
-  ember-auto-import@2.10.1(webpack@5.104.1):
+  ember-auto-import@2.10.1(webpack@5.105.1):
     dependencies:
       '@babel/core': 7.28.4
       '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.28.4)
@@ -9827,7 +9827,7 @@ snapshots:
       '@babel/preset-env': 7.28.3(@babel/core@7.28.4)
       '@embroider/macros': 1.18.3
       '@embroider/shared-internals': 2.9.1
-      babel-loader: 8.4.1(@babel/core@7.28.4)(webpack@5.104.1)
+      babel-loader: 8.4.1(@babel/core@7.28.4)(webpack@5.105.1)
       babel-plugin-ember-modules-api-polyfill: 3.5.0
       babel-plugin-ember-template-compilation: 2.4.1
       babel-plugin-htmlbars-inline-precompile: 5.3.1
@@ -9837,7 +9837,7 @@ snapshots:
       broccoli-merge-trees: 4.2.0
       broccoli-plugin: 4.0.7
       broccoli-source: 3.0.1
-      css-loader: 5.2.7(webpack@5.104.1)
+      css-loader: 5.2.7(webpack@5.105.1)
       debug: 4.4.3
       fs-extra: 10.1.0
       fs-tree-diff: 2.0.1
@@ -9845,14 +9845,14 @@ snapshots:
       is-subdir: 1.2.0
       js-string-escape: 1.0.1
       lodash: 4.17.21
-      mini-css-extract-plugin: 2.9.4(webpack@5.104.1)
+      mini-css-extract-plugin: 2.9.4(webpack@5.105.1)
       minimatch: 3.1.2
       parse5: 6.0.1
       pkg-entry-points: 1.1.1
       resolve: 1.22.10
       resolve-package-path: 4.0.3
       semver: 7.7.2
-      style-loader: 2.0.0(webpack@5.104.1)
+      style-loader: 2.0.0(webpack@5.105.1)
       typescript-memoize: 1.1.1
       walk-sync: 3.0.0
     transitivePeerDependencies:
@@ -10225,13 +10225,13 @@ snapshots:
     dependencies:
       ember-source: 3.28.12(@babel/core@7.28.4)
 
-  ember-qunit@6.2.0(@ember/test-helpers@2.9.6(@babel/core@7.28.4)(ember-source@3.28.12(@babel/core@7.28.4)))(ember-source@3.28.12(@babel/core@7.28.4))(qunit@2.25.0)(webpack@5.104.1):
+  ember-qunit@6.2.0(@ember/test-helpers@2.9.6(@babel/core@7.28.4)(ember-source@3.28.12(@babel/core@7.28.4)))(ember-source@3.28.12(@babel/core@7.28.4))(qunit@2.25.0)(webpack@5.105.1):
     dependencies:
       '@ember/test-helpers': 2.9.6(@babel/core@7.28.4)(ember-source@3.28.12(@babel/core@7.28.4))
       broccoli-funnel: 3.0.8
       broccoli-merge-trees: 3.0.2
       common-tags: 1.8.2
-      ember-auto-import: 2.10.1(webpack@5.104.1)
+      ember-auto-import: 2.10.1(webpack@5.105.1)
       ember-cli-babel: 7.26.11
       ember-cli-test-loader: 3.1.0
       ember-source: 3.28.12(@babel/core@7.28.4)
@@ -10354,7 +10354,7 @@ snapshots:
   engine.io@6.6.4:
     dependencies:
       '@types/cors': 2.8.17
-      '@types/node': 25.2.1
+      '@types/node': 25.2.3
       accepts: 1.3.8
       base64id: 2.0.0
       cookie: 0.7.2
@@ -11615,7 +11615,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 25.2.1
+      '@types/node': 25.2.3
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -11978,11 +11978,11 @@ snapshots:
 
   mimic-response@1.0.1: {}
 
-  mini-css-extract-plugin@2.9.4(webpack@5.104.1):
+  mini-css-extract-plugin@2.9.4(webpack@5.105.1):
     dependencies:
       schema-utils: 4.3.3
       tapable: 2.3.0
-      webpack: 5.104.1
+      webpack: 5.105.1
 
   minimatch@3.1.2:
     dependencies:
@@ -13137,11 +13137,11 @@ snapshots:
 
   strip-test-selectors@0.1.0: {}
 
-  style-loader@2.0.0(webpack@5.104.1):
+  style-loader@2.0.0(webpack@5.105.1):
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.104.1
+      webpack: 5.105.1
 
   styled_string@0.0.1: {}
 
@@ -13209,14 +13209,14 @@ snapshots:
       mkdirp: 0.5.6
       rimraf: 2.6.3
 
-  terser-webpack-plugin@5.3.16(webpack@5.104.1):
+  terser-webpack-plugin@5.3.16(webpack@5.105.1):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
       schema-utils: 4.3.3
       serialize-javascript: 6.0.2
       terser: 5.46.0
-      webpack: 5.104.1
+      webpack: 5.105.1
 
   terser@4.8.1:
     dependencies:
@@ -13613,7 +13613,7 @@ snapshots:
 
   webpack-sources@3.3.3: {}
 
-  webpack@5.104.1:
+  webpack@5.105.1:
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.8
@@ -13637,7 +13637,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 4.3.3
       tapable: 2.3.0
-      terser-webpack-plugin: 5.3.16(webpack@5.104.1)
+      terser-webpack-plugin: 5.3.16(webpack@5.105.1)
       watchpack: 2.5.1
       webpack-sources: 3.3.3
     transitivePeerDependencies:
