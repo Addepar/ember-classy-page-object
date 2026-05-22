@@ -12,20 +12,20 @@ importers:
         specifier: ^3.0.8
         version: 3.0.8
       ember-auto-import:
-        specifier: ^2.10.0
+        specifier: ^2.13.1
         version: 2.13.1(webpack@5.106.2)
       ember-cli-babel:
-        specifier: ^8.2.0
+        specifier: ^8.3.1
         version: 8.3.1(@babel/core@7.29.0)
       ember-cli-page-object:
-        specifier: ^2.3.1
+        specifier: ^2.3.2
         version: 2.3.2(@ember/test-helpers@2.9.6(@babel/core@7.29.0)(ember-source@3.28.12(@babel/core@7.29.0)))
     devDependencies:
       '@ember/optional-features':
         specifier: ^3.0.0
         version: 3.0.0(@types/node@25.6.0)
       '@ember/test-helpers':
-        specifier: ^2.9.4
+        specifier: ^2.9.6
         version: 2.9.6(@babel/core@7.29.0)(ember-source@3.28.12(@babel/core@7.29.0))
       '@embroider/test-setup':
         specifier: ^4.0.0
@@ -64,7 +64,7 @@ importers:
         specifier: ^6.2.0
         version: 6.2.0(@ember/test-helpers@2.9.6(@babel/core@7.29.0)(ember-source@3.28.12(@babel/core@7.29.0)))(ember-source@3.28.12(@babel/core@7.29.0))(qunit@2.25.0)(webpack@5.106.2)
       ember-resolver:
-        specifier: ^13.1.0
+        specifier: ^13.2.0
         version: 13.2.0
       ember-source:
         specifier: ~3.28.12
@@ -73,7 +73,7 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       ember-test-selectors:
-        specifier: ^7.0.0
+        specifier: ^7.1.0
         version: 7.1.0
       ember-try:
         specifier: ^4.0.0
@@ -82,10 +82,10 @@ importers:
         specifier: ^4.7.0
         version: 4.7.0
       qunit:
-        specifier: ^2.23.1
+        specifier: ^2.25.0
         version: 2.25.0
       webpack:
-        specifier: ^5.97.1
+        specifier: ^5.106.2
         version: 5.106.2
 
 packages:
@@ -3696,8 +3696,8 @@ packages:
   lodash.uniq@4.5.0:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
 
-  lodash@4.17.23:
-    resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
+  lodash@4.18.1:
+    resolution: {integrity: sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==}
 
   log-symbols@2.2.0:
     resolution: {integrity: sha512-VeIAFslyIerEJLXHziedo2basKbMKtTw3vfn5IzG0XTjhAVEJyNHnL2p7vc+wBDSdQuUpNw3M2u6xb9QsAY5Eg==}
@@ -5257,10 +5257,12 @@ packages:
 
   uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   validate-npm-package-name@5.0.1:
@@ -6333,7 +6335,7 @@ snapshots:
       babel-import-util: 3.0.1
       ember-cli-babel: 8.3.1(@babel/core@7.29.0)
       find-up: 5.0.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       resolve: 1.22.11
       semver: 7.7.4
     transitivePeerDependencies:
@@ -6347,7 +6349,7 @@ snapshots:
       babel-import-util: 3.0.1
       ember-cli-babel: 8.3.1(@babel/core@7.29.0)
       find-up: 5.0.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       resolve: 1.22.11
       semver: 7.7.4
     transitivePeerDependencies:
@@ -6367,7 +6369,7 @@ snapshots:
       fs-extra: 9.1.0
       is-subdir: 1.2.0
       js-string-escape: 1.0.1
-      lodash: 4.17.23
+      lodash: 4.18.1
       minimatch: 3.1.5
       pkg-entry-points: 1.1.1
       resolve-package-path: 4.0.3
@@ -6384,7 +6386,7 @@ snapshots:
       fs-extra: 9.1.0
       is-subdir: 1.2.0
       js-string-escape: 1.0.1
-      lodash: 4.17.23
+      lodash: 4.18.1
       minimatch: 3.1.5
       pkg-entry-points: 1.1.1
       resolve-package-path: 4.0.3
@@ -6396,7 +6398,7 @@ snapshots:
 
   '@embroider/test-setup@4.0.0':
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
       resolve: 1.22.11
 
   '@embroider/util@1.13.2(@babel/core@7.29.0)(ember-source@3.28.12(@babel/core@7.29.0))':
@@ -7010,7 +7012,7 @@ snapshots:
 
   async@2.6.4:
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
 
   at-least-node@1.0.0: {}
 
@@ -7059,7 +7061,7 @@ snapshots:
   babel-plugin-filter-imports@4.0.0:
     dependencies:
       '@babel/types': 7.29.0
-      lodash: 4.17.23
+      lodash: 4.18.1
 
   babel-plugin-htmlbars-inline-precompile@5.3.1:
     dependencies:
@@ -7952,12 +7954,12 @@ snapshots:
       ora: 3.4.0
       through2: 3.0.2
 
-  consolidate@0.16.0(handlebars@4.7.9)(lodash@4.17.23)(mustache@4.2.0)(underscore@1.13.7):
+  consolidate@0.16.0(handlebars@4.7.9)(lodash@4.18.1)(mustache@4.2.0)(underscore@1.13.7):
     dependencies:
       bluebird: 3.7.2
     optionalDependencies:
       handlebars: 4.7.9
-      lodash: 4.17.23
+      lodash: 4.18.1
       mustache: 4.2.0
       underscore: 1.13.7
 
@@ -8188,7 +8190,7 @@ snapshots:
       handlebars: 4.7.9
       is-subdir: 1.2.0
       js-string-escape: 1.0.1
-      lodash: 4.17.23
+      lodash: 4.18.1
       mini-css-extract-plugin: 2.10.2(webpack@5.106.2)
       minimatch: 3.1.5
       parse5: 6.0.1
@@ -8455,7 +8457,7 @@ snapshots:
       isbinaryfile: 5.0.4
       js-yaml: 4.1.0
       leek: 0.0.24
-      lodash: 4.17.23
+      lodash: 4.18.1
       markdown-it: 13.0.2
       markdown-it-terminal: 0.4.0(markdown-it@13.0.2)
       minimatch: 7.4.6
@@ -8650,7 +8652,7 @@ snapshots:
   ember-try-config@4.0.0:
     dependencies:
       ember-source-channel-url: 3.0.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       package-json: 6.5.0
       remote-git-tags: 3.0.0
       semver: 7.7.4
@@ -8853,7 +8855,7 @@ snapshots:
       js-yaml: 3.14.1
       json-stable-stringify-without-jsonify: 1.0.1
       levn: 0.3.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       minimatch: 3.1.5
       mkdirp: 0.5.6
       natural-compare: 1.4.0
@@ -9737,7 +9739,7 @@ snapshots:
       cli-width: 2.2.1
       external-editor: 3.1.0
       figures: 2.0.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       mute-stream: 0.0.7
       run-async: 2.4.1
       rxjs: 6.6.7
@@ -9753,7 +9755,7 @@ snapshots:
       cli-width: 3.0.0
       external-editor: 3.1.0
       figures: 3.2.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       mute-stream: 0.0.8
       ora: 5.4.1
       run-async: 2.4.1
@@ -10198,7 +10200,7 @@ snapshots:
 
   lodash.uniq@4.5.0: {}
 
-  lodash@4.17.23: {}
+  lodash@4.18.1: {}
 
   log-symbols@2.2.0:
     dependencies:
@@ -11556,7 +11558,7 @@ snapshots:
   table@5.4.6:
     dependencies:
       ajv: 6.14.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       slice-ansi: 2.1.0
       string-width: 3.1.0
 
@@ -11605,14 +11607,14 @@ snapshots:
       charm: 1.0.2
       commander: 2.20.3
       compression: 1.8.0
-      consolidate: 0.16.0(handlebars@4.7.9)(lodash@4.17.23)(mustache@4.2.0)(underscore@1.13.7)
+      consolidate: 0.16.0(handlebars@4.7.9)(lodash@4.18.1)(mustache@4.2.0)(underscore@1.13.7)
       execa: 1.0.0
       express: 4.21.2
       fireworm: 0.7.2
       glob: 7.2.3
       http-proxy: 1.18.1
       js-yaml: 3.14.1
-      lodash: 4.17.23
+      lodash: 4.18.1
       mkdirp: 3.0.1
       mustache: 4.2.0
       node-notifier: 10.0.1
