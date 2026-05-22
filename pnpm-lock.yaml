@@ -12,20 +12,20 @@ importers:
         specifier: ^3.0.8
         version: 3.0.8
       ember-auto-import:
-        specifier: ^2.10.0
+        specifier: ^2.13.1
         version: 2.13.1(webpack@5.106.2)
       ember-cli-babel:
-        specifier: ^8.2.0
+        specifier: ^8.3.1
         version: 8.3.1(@babel/core@7.29.0)
       ember-cli-page-object:
-        specifier: ^2.3.1
+        specifier: ^2.3.2
         version: 2.3.2(@ember/test-helpers@2.9.6(@babel/core@7.29.0)(ember-source@3.28.12(@babel/core@7.29.0)))
     devDependencies:
       '@ember/optional-features':
         specifier: ^3.0.0
         version: 3.0.0(@types/node@25.6.0)
       '@ember/test-helpers':
-        specifier: ^2.9.4
+        specifier: ^2.9.6
         version: 2.9.6(@babel/core@7.29.0)(ember-source@3.28.12(@babel/core@7.29.0))
       '@embroider/test-setup':
         specifier: ^4.0.0
@@ -64,7 +64,7 @@ importers:
         specifier: ^6.2.0
         version: 6.2.0(@ember/test-helpers@2.9.6(@babel/core@7.29.0)(ember-source@3.28.12(@babel/core@7.29.0)))(ember-source@3.28.12(@babel/core@7.29.0))(qunit@2.25.0)(webpack@5.106.2)
       ember-resolver:
-        specifier: ^13.1.0
+        specifier: ^13.2.0
         version: 13.2.0
       ember-source:
         specifier: ~3.28.12
@@ -73,7 +73,7 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       ember-test-selectors:
-        specifier: ^7.0.0
+        specifier: ^7.1.0
         version: 7.1.0
       ember-try:
         specifier: ^4.0.0
@@ -82,10 +82,10 @@ importers:
         specifier: ^4.7.0
         version: 4.7.0
       qunit:
-        specifier: ^2.23.1
+        specifier: ^2.25.0
         version: 2.25.0
       webpack:
-        specifier: ^5.97.1
+        specifier: ^5.106.2
         version: 5.106.2
 
 packages:
@@ -2831,8 +2831,8 @@ packages:
   flatted@2.0.2:
     resolution: {integrity: sha512-r5wGx7YeOwNWNlCA0wQ86zKyDLMQr+/RB8xy74M4hTphfmjlijTSSXGuH8rnvKZnfT9i+75zmd8jcKdMR4O6jA==}
 
-  follow-redirects@1.15.9:
-    resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
+  follow-redirects@1.16.0:
+    resolution: {integrity: sha512-y5rN/uOsadFT/JfYwhxRS5R7Qce+g3zG97+JrtFZlC9klX/W5hD7iiLzScI4nZqUS7DNUdhPgw4xI8W2LuXlUw==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -5257,10 +5257,12 @@ packages:
 
   uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   validate-npm-package-name@5.0.1:
@@ -9233,7 +9235,7 @@ snapshots:
 
   flatted@2.0.2: {}
 
-  follow-redirects@1.15.9: {}
+  follow-redirects@1.16.0: {}
 
   for-each@0.3.5:
     dependencies:
@@ -9658,7 +9660,7 @@ snapshots:
   http-proxy@1.18.1:
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.15.9
+      follow-redirects: 1.16.0
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
