@@ -12,20 +12,20 @@ importers:
         specifier: ^3.0.8
         version: 3.0.8
       ember-auto-import:
-        specifier: ^2.10.0
+        specifier: ^2.13.1
         version: 2.13.1(webpack@5.106.2)
       ember-cli-babel:
-        specifier: ^8.2.0
+        specifier: ^8.3.1
         version: 8.3.1(@babel/core@7.29.0)
       ember-cli-page-object:
-        specifier: ^2.3.1
+        specifier: ^2.3.2
         version: 2.3.2(@ember/test-helpers@2.9.6(@babel/core@7.29.0)(ember-source@3.28.12(@babel/core@7.29.0)))
     devDependencies:
       '@ember/optional-features':
         specifier: ^3.0.0
         version: 3.0.0(@types/node@25.6.0)
       '@ember/test-helpers':
-        specifier: ^2.9.4
+        specifier: ^2.9.6
         version: 2.9.6(@babel/core@7.29.0)(ember-source@3.28.12(@babel/core@7.29.0))
       '@embroider/test-setup':
         specifier: ^4.0.0
@@ -64,7 +64,7 @@ importers:
         specifier: ^6.2.0
         version: 6.2.0(@ember/test-helpers@2.9.6(@babel/core@7.29.0)(ember-source@3.28.12(@babel/core@7.29.0)))(ember-source@3.28.12(@babel/core@7.29.0))(qunit@2.25.0)(webpack@5.106.2)
       ember-resolver:
-        specifier: ^13.1.0
+        specifier: ^13.2.0
         version: 13.2.0
       ember-source:
         specifier: ~3.28.12
@@ -73,7 +73,7 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       ember-test-selectors:
-        specifier: ^7.0.0
+        specifier: ^7.1.0
         version: 7.1.0
       ember-try:
         specifier: ^4.0.0
@@ -82,10 +82,10 @@ importers:
         specifier: ^4.7.0
         version: 4.7.0
       qunit:
-        specifier: ^2.23.1
+        specifier: ^2.25.0
         version: 2.25.0
       webpack:
-        specifier: ^5.97.1
+        specifier: ^5.106.2
         version: 5.106.2
 
 packages:
@@ -1110,10 +1110,9 @@ packages:
   '@webassemblyjs/wast-printer@1.14.1':
     resolution: {integrity: sha512-kPSSXE6De1XOR820C90RIo2ogvZG+c3KiHzqUoO/F34Y2shGzesfqv7o57xrxovZJH/MetF5UjroJ/R/3isoiw==}
 
-  '@xmldom/xmldom@0.8.10':
-    resolution: {integrity: sha512-2WALfTl4xo2SkGCYRt6rDTFfk9R1czmBvUQy12gK2KuRKIpWEhcbbzy8EZXtz/jkRqHX8bFEc6FC1HjX4TUWYw==}
+  '@xmldom/xmldom@0.8.13':
+    resolution: {integrity: sha512-KRYzxepc14G/CEpEGc3Yn+JKaAeT63smlDr+vjB8jRfgTBBI9wRj/nkQEO+ucV8p8I9bfKLWp37uHgFrbntPvw==}
     engines: {node: '>=10.0.0'}
-    deprecated: this version has critical issues, please update to the latest version
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -5257,10 +5256,12 @@ packages:
 
   uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   validate-npm-package-name@5.0.1:
@@ -6810,7 +6811,7 @@ snapshots:
       '@webassemblyjs/ast': 1.14.1
       '@xtuc/long': 4.2.2
 
-  '@xmldom/xmldom@0.8.10': {}
+  '@xmldom/xmldom@0.8.13': {}
 
   '@xtuc/ieee754@1.2.0': {}
 
@@ -11599,7 +11600,7 @@ snapshots:
 
   testem@3.15.2(handlebars@4.7.9)(underscore@1.13.7):
     dependencies:
-      '@xmldom/xmldom': 0.8.10
+      '@xmldom/xmldom': 0.8.13
       backbone: 1.6.0
       bluebird: 3.7.2
       charm: 1.0.2
