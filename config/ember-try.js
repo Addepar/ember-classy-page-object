@@ -9,7 +9,7 @@ module.exports = function() {
     getChannelURL('canary'),
   ]).then(urls => {
     return {
-      usePnpm: true,
+      packageManager: 'pnpm',
       scenarios: [
         embroiderSafe(),
         embroiderOptimized(),
@@ -20,6 +20,9 @@ module.exports = function() {
               'ember-source': '~3.28.0',
             },
           },
+          pnpm: {
+            patchedDependencies: {},
+          },
         },
         {
           name: "ember-lts-4.4",
@@ -27,6 +30,9 @@ module.exports = function() {
             devDependencies: {
               "ember-source": "~4.4.5",
             },
+          },
+          pnpm: {
+            patchedDependencies: {},
           },
         },
         {
@@ -36,6 +42,9 @@ module.exports = function() {
               "ember-source": "~4.8.0",
             },
           },
+          pnpm: {
+            patchedDependencies: {},
+          },
         },
         {
           name: "ember-lts-4.12",
@@ -43,6 +52,9 @@ module.exports = function() {
             devDependencies: {
               "ember-source": "~4.12.0",
             },
+          },
+          pnpm: {
+            patchedDependencies: {},
           },
         },
         {
@@ -52,6 +64,9 @@ module.exports = function() {
               "ember-source": "~5.4.0",
             },
           },
+          pnpm: {
+            patchedDependencies: {},
+          },
         },
         {
           name: "ember-lts-5.8",
@@ -59,6 +74,9 @@ module.exports = function() {
             devDependencies: {
               "ember-source": "~5.8.0",
             },
+          },
+          pnpm: {
+            patchedDependencies: {},
           },
         },
         {
@@ -68,6 +86,9 @@ module.exports = function() {
               "ember-source": "~5.12.0",
             },
           },
+          pnpm: {
+            patchedDependencies: {},
+          },
         },
         {
           name: "ember-release",
@@ -75,6 +96,9 @@ module.exports = function() {
             devDependencies: {
               'ember-source': urls[0],
             },
+          },
+          pnpm: {
+            patchedDependencies: {},
           },
         },
         {
@@ -84,6 +108,9 @@ module.exports = function() {
               'ember-source': urls[1],
             },
           },
+          pnpm: {
+            patchedDependencies: {},
+          },
         },
         {
           name: 'ember-canary',
@@ -91,6 +118,9 @@ module.exports = function() {
             devDependencies: {
               'ember-source': urls[2],
             },
+          },
+          pnpm: {
+            patchedDependencies: {},
           },
         },
         {
